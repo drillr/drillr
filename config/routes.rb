@@ -1,57 +1,48 @@
 Rails.application.routes.draw do
+  # creates a 'sessions' and 'registrations' controller for handling
+  # user sign up, sign in, editing, etc
   devise_for :users
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  # 'show' will be a user's profile with their badges, drills, etc
+  # 'index' will be the leaderboard
+  resources :users, only: [:index, :show]
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  # # /categories  = a list of all the categories
+  # # /categories/ruby = a list of all the drill groups in that category
+  resources :categories do
+    resources :drill_groups, only: [:show]
+  end
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  resources :drill_groups, except: [:show]
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  resources :drills do
+    resources :solutions
+    resources :answers
+    resources :selected_drills
+  end
 
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
+  resources :achivements
+  resources :user_achievements
+
+
+  # resources :categories
   #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+  # resources :drill_groups do # /drill_groups/ruby-arrays-part-1
+  #   resources :drills, only: [:show] # /drill_groups/ruby-arrays-part-1/drill-1
+  # end
+  #
+  # resources :drills do
+  #   resources :answers
+  #   resources :solutions
+  # end
+  #
+  # resources :users, only: [:show] do
+  #   resources :user_achievements, only: [:create]
+  # end
+  #
+  # resources :achievements
 
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
 
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
 
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
 
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end
