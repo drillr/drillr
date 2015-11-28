@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151128045737) do
+ActiveRecord::Schema.define(version: 20151128183017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,17 @@ ActiveRecord::Schema.define(version: 20151128045737) do
 
   add_index "drills", ["drill_group_id"], name: "index_drills_on_drill_group_id", using: :btree
 
+  create_table "selected_drills", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "drill_id"
+    t.boolean  "completed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "selected_drills", ["drill_id"], name: "index_selected_drills_on_drill_id", using: :btree
+  add_index "selected_drills", ["user_id"], name: "index_selected_drills_on_user_id", using: :btree
+
   create_table "solutions", force: :cascade do |t|
     t.integer  "drill_id"
     t.text     "body"
@@ -73,17 +84,6 @@ ActiveRecord::Schema.define(version: 20151128045737) do
   end
 
   add_index "solutions", ["drill_id"], name: "index_solutions_on_drill_id", using: :btree
-
-  create_table "training_plans", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "drill_id"
-    t.boolean  "completed"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "training_plans", ["drill_id"], name: "index_training_plans_on_drill_id", using: :btree
-  add_index "training_plans", ["user_id"], name: "index_training_plans_on_user_id", using: :btree
 
   create_table "user_achievements", force: :cascade do |t|
     t.integer  "user_id"
@@ -122,9 +122,9 @@ ActiveRecord::Schema.define(version: 20151128045737) do
   add_foreign_key "answers", "users"
   add_foreign_key "drill_groups", "categories"
   add_foreign_key "drills", "drill_groups"
+  add_foreign_key "selected_drills", "drills"
+  add_foreign_key "selected_drills", "users"
   add_foreign_key "solutions", "drills"
-  add_foreign_key "training_plans", "drills"
-  add_foreign_key "training_plans", "users"
   add_foreign_key "user_achievements", "achievements"
   add_foreign_key "user_achievements", "users"
 end
