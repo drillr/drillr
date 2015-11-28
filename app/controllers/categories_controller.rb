@@ -7,7 +7,6 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    category_params
     @category = Category.new(category_params)
     if @category.save
       redirect_to categories_path, notice: "You have successfully created a new category."
@@ -21,16 +20,15 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    category_params
     if @category.update(category_params)
       redirect_to categories_path, notice: "Category name successfully updated."
     else
-      redirect_to category_path(@category)
+      render :edit
     end
   end
 
   def show
-       
+
   end
 
   def index
@@ -47,7 +45,7 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    category_params = params.require(:category).permit(:name)
+    params.require(:category).permit(:name)
   end
 
   def find_category
