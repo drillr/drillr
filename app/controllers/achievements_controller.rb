@@ -1,10 +1,12 @@
 class AchievementsController < ApplicationController
+  before_action :find_achievement, only: [:show, :edit, :update, :destroy]
+
   def new
     @achievement = Achievement.new
   end
 
   def create
-    @achievement = Achivement.new(achievement_params)
+    @achievement = Achievement.new(achievement_params)
     if @achievement.save
       redirect_to achievements_path
     else
@@ -13,6 +15,7 @@ class AchievementsController < ApplicationController
   end
 
   def index
+    @achievements = Achievement.all
   end
 
   def show
@@ -22,12 +25,28 @@ class AchievementsController < ApplicationController
   end
 
   def update
+    @achievement.update(achievement_params)
+
+    if @achievement.save
+      redirect_to @achievement, notice: "Achievement updated."
+    else
+      render :edit
+    end
   end
 
   def destroy
+    if @achievement.destroy
+      redirect_to achievements_path, notice: "Achievement deleted."
+    else
+      render text: "error destroying achievement"
+    end
   end
 
   private
+  def find_achievement
+    @achievement = Achievement.find(params[:id])
+  end
+
   def achievement_params
     params.require(:achievement).permit(:name, :description, :point_value)
   end

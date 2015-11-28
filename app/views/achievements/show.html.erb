@@ -1,0 +1,8 @@
+<h1><%= @achievement.name %></h1>
+<p><%= @achievement.description %></p>
+<p>
+  <em>Unlocks at <strong><%= @achievement.point_value_display %></strong></em>
+</p>
+<hr>
+<p><%= link_to "edit", edit_achievement_path(@achievement) %></p>
+<p><%= link_to "delete", achievement_path(@achievement), method: :delete %></p>
