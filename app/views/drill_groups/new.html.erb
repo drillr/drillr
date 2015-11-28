@@ -3,7 +3,7 @@
 <%= simple_form_for @drill_group do |f| %>
   <%= f.input :name, input_html: {class: "form-control"} %>
   <%= f.input :description, input_html: {class: "form-control"}%>
-  <%#= f.input :categories, as: :select %>
+  <%= f.input :categories, as: :select %>
 <!-- Category Input will go here -->
   <%= f.submit class: "btn btn-primary", data: {disable_with: "Saving..."} %>
 <% end %>
