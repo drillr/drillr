@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Drill Groups</title>
+  </head>
+  <body>
+
+
+    <h1><%= @category.name %> Drill Groups</h1>
+
+    <div class="">
+      <% @category.drill_groups.each do |drill_group| %>
+      <div class="">
+        <%= drill_group.name %>
+      </div>
+      <% end %>
+    </div>
+
+
+  </body>
+</html>
