@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :selected_drills
   end
 
-  resources :achivements
+  resources :achievements
   resources :user_achievements
 
 
