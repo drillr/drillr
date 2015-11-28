@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # creates a 'sessions' and 'registrations' controller for handling
   # user sign up, sign in, editing, etc
-  devise_for :users
+  devise_for :users, :controllers => { registrations: "registrations" }
 
   # 'show' will be a user's profile with their badges, drills, etc
   # 'index' will be the leaderboard
