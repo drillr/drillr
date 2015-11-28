@@ -16,6 +16,7 @@ gem 'delayed_job_active_record'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave' # for enabling multiple uploads
 gem 'mini_magick'
 gem 'mailcatcher'
+gem 'simple_form'
 
 
 group :development, :test do
