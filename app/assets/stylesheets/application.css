@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+ li {
+   list-style-type: none;
+   display: inline;
+   padding: 20px;
+   line-height: 54px;
+   }
+
+ .pull-right {
+   margin-right: 25px;
+ }
+
+.app-title {
+  text-align:center;
+  padding: 150px;
+}
