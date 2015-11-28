@@ -15,6 +15,8 @@ gem 'cancancan', '~> 1.10'
 gem 'delayed_job_active_record'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave' # for enabling multiple uploads
 gem 'mini_magick'
+gem 'mailcatcher'
+
 
 group :development, :test do
   gem 'byebug'
