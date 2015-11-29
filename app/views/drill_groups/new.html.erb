@@ -1,10 +1,2 @@
 <h1>Create Drill Group</h1>
-<div class="form-group">
-<%= simple_form_for @drill_group do |f| %>
-  <%= f.input :name, input_html: {class: "form-control"} %>
-  <%= f.input :description, input_html: {class: "form-control"}%>
-  <%= f.input :categories, as: :select %>
-<!-- Category Input will go here -->
-  <%= f.submit class: "btn btn-primary", data: {disable_with: "Saving..."} %>
-<% end %>
-</div>
+<%= render "form" %>
