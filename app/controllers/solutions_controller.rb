@@ -2,6 +2,9 @@ class SolutionsController < ApplicationController
 
   before_action :find_solution, only: [ :edit, :update, :destroy]
 
+  # adds CanCanCan authorization for all controller actions
+  load_and_authorize_resource
+
   def create
     @drill = Drill.find params[:drill_id]
 
@@ -33,7 +36,7 @@ class SolutionsController < ApplicationController
   def destroy
     @solution.destroy
 
-    redirect_to(drill_path(@solution.drill), alert: "Drill Group deleted!"
+    redirect_to(drill_path(@solution.drill), alert: "Solution Deleted!"
   end
 
 
