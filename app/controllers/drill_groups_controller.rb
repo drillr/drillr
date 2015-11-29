@@ -1,6 +1,9 @@
 class DrillGroupsController < ApplicationController
-
   before_action :find_drill_group, only: [:show, :edit, :update, :destroy]
+
+  # adds CanCanCan authorization for all controller actions
+  load_and_authorize_resource
+
 
   def new
     @drill_group = DrillGroup.new

@@ -1,6 +1,10 @@
 class AchievementsController < ApplicationController
   before_action :find_achievement, only: [:show, :edit, :update, :destroy]
 
+  # adds CanCanCan authorization for all controller actions
+  load_and_authorize_resource
+
+
   def new
     @achievement = Achievement.new
   end

@@ -1,6 +1,8 @@
 class CategoriesController < ApplicationController
-
   before_action :find_category, only: [:edit, :update, :show, :destroy]
+
+  # adds CanCanCan authorization for all controller actions
+  load_and_authorize_resource
 
   def new
     @category = Category.new
