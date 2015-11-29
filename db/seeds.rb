@@ -14,7 +14,7 @@
                password: Faker::Internet.password(8) })
 end
 
-User.create({first_name: "Johnny",
+User.create!({first_name: "Johnny",
              last_name: "Admin",
              username: "i_am_admin",
              email: "admin@admin.com",
@@ -22,7 +22,7 @@ User.create({first_name: "Johnny",
              confirmed_at: Time.now,
              is_admin: true })
 
-User.create({first_name: "Timmy",
+User.create!({first_name: "Timmy",
              last_name: "User",
              username: "normal_user",
              email: "user@user.com",
@@ -30,6 +30,13 @@ User.create({first_name: "Timmy",
              confirmed_at: Time.now
               })
 
+
+base_points = 10
+
+User.all.each do |user|
+  user.points = base_points * rand(1..1000)
+  user.save!
+end
 
 
 categories = ["Ruby", "JavaScript"]
