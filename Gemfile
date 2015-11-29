@@ -17,6 +17,7 @@ gem 'carrierwave', github: 'carrierwaveuploader/carrierwave' # for enabling mult
 gem 'mini_magick'
 gem 'mailcatcher'
 gem 'simple_form'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'byebug'
