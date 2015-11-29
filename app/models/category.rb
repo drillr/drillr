@@ -1,5 +1,7 @@
 class Category < ActiveRecord::Base
 
-  has_many :drill_groups
+  has_many :drill_groups, dependent: :destroy
+
+
 
 end

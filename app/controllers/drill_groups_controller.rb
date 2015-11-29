@@ -40,7 +40,7 @@ class DrillGroupsController < ApplicationController
   def destroy
     @drill_group.destroy
 
-    redirect_to root_path, alert: "Drill Group deleted!"
+    redirect_to category_path(@drill_group.category), alert: "Drill Group deleted!"
   end
 
 
