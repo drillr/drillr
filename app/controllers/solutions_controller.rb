@@ -2,11 +2,9 @@ class SolutionsController < ApplicationController
 
   before_action :find_solution, only: [ :edit, :update, :destroy]
 
-  def new
-    @solution = Solution.new
-  end
-
   def create
+    @drill = Drill.find params[:drill_id]
+
     solution_params
     @solution = Solution.new(solution_params)
 
@@ -22,6 +20,7 @@ class SolutionsController < ApplicationController
   end
 
   def update
+    @drill = Drill.find params[:drill_id]
     solution_params
 
     if @solution.update(solution_params)
