@@ -10,11 +10,28 @@ class AnswersController < ApplicationController
     @answer.user = current_user
     @answer.drill = @drill
 
+    @user = current_user
     @solutions = @drill.solutions
 
     @solutions.each do |solution|
       if @answer.body == solution.body
         @match = true
+        @user.points = @user.points + 10
+
+        achievements = Achievement.all
+        # byebug
+
+        user_achievements_array = []
+        achievements.each do |achievement|
+          if @user.points >= achievement.point_value
+        byebug
+            user_achievements_array.push(achievement.name)
+          end
+          byebug
+          @user.achievements = user_achievements_array
+        end
+
+        @user.save
       else
         @match = false
       end

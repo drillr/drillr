@@ -11,6 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
-
 # Ignore the public folder
 /public
+/.byebug_history
