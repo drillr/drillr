@@ -4,6 +4,6 @@ class DrillGroup < ActiveRecord::Base
   has_many :drills, dependent: :destroy
 
   validates :name, presence: true
-  validates :description, presence: true
+  #validates :description, presence: true
   validates :category, presence: true
 end
