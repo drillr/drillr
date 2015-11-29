@@ -20,9 +20,13 @@
           <li><%= link_to "Add Drill Group", new_drill_group_path %></li>
           <li><%= link_to "Add Drill", new_drill_path %></li>
             <div class="pull-right">
-              <li><%= link_to "View Profile", user_path(current_user) %></li>
-              <li><%= link_to "Login", new_user_session_path %></li>
-              <li><%= link_to "Sign Up", new_user_registration_path %></li>
+              <% if user_signed_in? %>
+                <li><%= link_to "View Profile", user_path(current_user) %></li>
+                <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to "Login", new_user_session_path %></li>
+                <li><%= link_to "Sign Up", new_user_registration_path %></li>
+              <% end %>
             </div>
         </div>
       </ul>
