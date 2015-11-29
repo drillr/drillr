@@ -12,5 +12,6 @@
 </p>
 <hr>
 <% if can? :manage, @user %>
-  <%= link_to "delete", edit_user_registration_path, method: :delete %>
+  <%= link_to "update profile", edit_user_registration_path %>
+  <%= link_to "delete account", edit_user_registration_path, method: :delete, data: { confirm: "Really delete your account? You cannot undo this." } %>
 <% end %>
