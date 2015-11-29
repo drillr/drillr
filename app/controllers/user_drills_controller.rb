@@ -1,12 +1,12 @@
-class SelectedDrillsController < ApplicationController
-  before_action :authenticate_user
-
+class UserDrillsController < ApplicationController
+  load_and_authorize_resource
+  
   def create
-    selected_drill = SelectedDrill.new
+    user_drill = UserDrill.new
     drill = Drill.find params[:drill_id]
-    selected_drill.drill = drill
-    selected_drill.user = current_user
-    if selected_drill.save
+    user_drill.drill = drill
+    user_drill.user = current_user
+    if user_drill.save
       redirect_to drill_path(drill), notice: "Drill has been added."
     else
       redirect_to drill_path(drill), alert: "Drill has already been added."
@@ -15,8 +15,8 @@ class SelectedDrillsController < ApplicationController
 
   def destroy
     drill = Drill.find params[:drill_id]
-    selected_drill = current_user.selected_drills.find params[:id]
-    selected_drill.destroy
+    user_drill = current_user.user_drills.find params[:id]
+    user_drill.destroy
     redirect_to drill_path(drill), notice: "Drill has been removed."
   end
 

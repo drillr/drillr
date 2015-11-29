@@ -19,4 +19,12 @@ class Drill < ActiveRecord::Base
   validates :hint, presence: true
   validates :drill_group_id, presence: true
 
+  def selected_drill_by?(user)
+    user_drill_for(user).present?
+  end
+
+  def user_drill_for(user)
+    user_drills.find_by_user_id(user.id)
+  end
+
 end
