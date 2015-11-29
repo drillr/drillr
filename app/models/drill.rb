@@ -3,9 +3,14 @@ class Drill < ActiveRecord::Base
   has_many    :solutions, dependent: :destroy
   has_many    :answers
 
+
   # We can add multiple solutions at the same time as creating a drill object
   # Blank solutions will not be saved
   accepts_nested_attributes_for :solutions, reject_if: lambda {|a| a[:body].blank? }
+
+  has_many    :user_drills, dependent: :destroy
+  has_many    :selecting_users, through: :user_drills, source: :user
+
 
   validates :title, presence: true
   validates :description, presence: true
