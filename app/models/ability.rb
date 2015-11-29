@@ -9,6 +9,7 @@ class Ability
     else
       can :read, :all
       can :create, Answer
+      # TODO: add checking to make sure the user can't delete other people's stuff
       can [:create, :destroy], SelectedDrill
       can [:create, :destroy], UserAchievement
     end
