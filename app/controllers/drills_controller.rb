@@ -35,7 +35,8 @@ class DrillsController < ApplicationController
   end
 
   def destroy
-
+    @drill.destroy
+    redirect_to category_drill_group_path(@drill.drill_group.category), notice: "You have successfully deleted the selected drill."
   end
 
 
@@ -43,7 +44,7 @@ class DrillsController < ApplicationController
 private
 
   def drill_params
-    params.require(:drill).permit(:title, :description, :base_points, :skill_level, :hint)
+    params.require(:drill).permit(:title, :description, :base_points, :skill_level, :drill_group_id, :hint)
   end
 
   def find_drill

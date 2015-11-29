@@ -1,21 +1,21 @@
-<h2> Drill </h2>
+<h2> Drill: <%= @drill.title %> </h2>
+
 
 <div class="">
-  <span>Group: <%= @drill.drill_group.name %></span>
+  <h4>Group: <strong><%= @drill.drill_group.name %></h4></strong>
 </div>
 
 <div class="">
-  Title: <%= @drill.title %>
+  <strong>Title: </strong> <%= @drill.title %>
 </div>
 
 <div class="">
-  Description: <%= @drill.description %>
+  <strong>Description: </strong> <%= @drill.description %>
 </div>
 
 <div class="">
-  Hint: <%= @drill.hint %>
+  <strong>Hint: </strong> <%= @drill.hint %>
 </div>
 
-<div class="">
-  <span class="">@drill.</span>
-</div>
+<%= link_to "Edit", edit_drill_path(@drill), class: "btn btn-info" %>
+<%= link_to("Delete", drill_path(@drill), {method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure you want to delete this drill?"}}) %>

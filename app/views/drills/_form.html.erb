@@ -5,13 +5,9 @@
   <%= f.input :base_points, input_html: {class: "form-control"} %>
   <%= f.input :skill_level, input_html: {class: "form-control"} %>
   <%= f.input :hint, input_html: {class: "form-control"} %>
-  <div class="dropdown">
-    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> Select Drill Group
-      <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li><%= drill_group.id %></li>
-    </ul>
+  <div class="form-group">
+    <%= f.label :drill_group_id %>
+    <%= f.collection_select :drill_group_id, DrillGroup.order(:name), :id, :name, {class: "form-control"} %>
   </div>
   <%=  %>
 </div>
