@@ -16,7 +16,15 @@ class AnswersController < ApplicationController
     @solutions.each do |solution|
       if @answer.body == solution.body
         @match = true
-        @user.points = @user.points + 10
+        earned_points = @drill.base_points * @drill.skill_level
+        original_points = @drill.base_points * @drill.skill_level
+        if params[:answer][:used_hint]
+          earned_points *= 0.5
+          Rails.logger.info "Used hint, so user will earn #{earned_points} instead of #{original_points}"
+        end
+
+
+        @user.points = @user.points + earned_points
 
         achievements = Achievement.all
 
