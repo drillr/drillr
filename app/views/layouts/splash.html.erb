@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DrillrApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body id="back">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+     <ul>
+       <div class="navbar-header">
+         <%= link_to root_path do %>
+       <span class="navbar-brand">drillr</span>
+         <% end %>
+       </div>
+         <li><%= link_to "Leaderboard", leaderboard_path %></li>
+
+       <%= image_tag("star.jpg", class: "star") %>
+           <div class="pull-right">
+             <% if user_signed_in? %>
+               <li><%= link_to "View Profile", user_path(current_user) %></li>
+               <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+             <% end %>
+           </div>
+       </div>
+     </ul>
+  </nav>
+<div class="col-md-8 col-centered">
+
+
+<%= yield %>
+
+</div>
+
+</body>
+</html>
