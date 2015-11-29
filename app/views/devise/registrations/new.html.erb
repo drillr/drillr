@@ -10,7 +10,5 @@
     <em>(<%= @minimum_password_length %> characters minimum)</em>
   <% end %>
   <%= f.input :password_confirmation %>
-  <%= f.submit "Sign up" %>
+  <%= f.submit "Sign up", class: "btn-primary" %>
 <% end %>
-
-<%= render "devise/shared/links" %>

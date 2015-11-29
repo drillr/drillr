@@ -1,2 +1,74 @@
+$brand-primary: #4F6F40;
+
 @import "bootstrap";
 @import "bootstrap-sprockets";
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: #4F6F40;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #4F6F40;
+  outline: 0 none;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  font-family: 'squares_boldregular';
+}
+
+.btn-sm, .btn-group-sm > .btn {
+  padding: 5px 10px 5px;
+  font-size: 11px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+btn-primary {
+  padding: 5px;
+}
+.navbar-brand {
+  color: #eee!important;
+  font-family: 'armalite_rifleregular';
+  margin-top: 2px;
+  padding-right: 50px;
+}
+
+
+.navbar-brand:hover {
+  color: #777!important;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  text-decoration: none;
+  color: #262626;
+  background-color: #222;
+}
+
+.dropdown-menu {
+  background-color: rgba(51, 51, 51, 0.95);
+}
+
+.dropdown-menu {
+  padding: 0px 0;
+}
