@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
   validates :username, presence: true
 
-  has_many :user_achievements
+  has_many :user_achievements, dependent: :destroy
   has_many :achievements, through: :user_achievements
 
   def full_name
