@@ -19,7 +19,8 @@ class DrillsController < ApplicationController
   end
 
   def update
-    if @drill.save
+    drill_params
+    if @drill.update(drill_params)
       redirect_to drill_path(@drill), notice: "You have successfully updated this drill."
     else
       render :edit
@@ -35,8 +36,9 @@ class DrillsController < ApplicationController
   end
 
   def destroy
+    drill_group = @drill.drill_group
     @drill.destroy
-    redirect_to category_drill_group_path(@drill.drill_group.category), notice: "You have successfully deleted the selected drill."
+    redirect_to category_drill_group_path(drill_group.category, drill_group), notice: "You have successfully deleted the selected drill."
   end
 
 
