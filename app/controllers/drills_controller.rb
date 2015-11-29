@@ -20,7 +20,7 @@ class DrillsController < ApplicationController
   end
 
   def update
-    drill_params
+    # binding.pry
     if @drill.update(drill_params)
       redirect_to drill_path(@drill), notice: "You have successfully updated this drill."
     else
@@ -48,7 +48,7 @@ private
 
   def drill_params
     params.require(:drill).permit(:title, :description, :base_points, :skill_level,
-                                  :drill_group_id, :hint, {solutions_attributes: [:body]})
+                                  :drill_group_id, :hint, {solutions_attributes: [:id, :body]})
   end
 
   def find_drill
