@@ -14,6 +14,22 @@
                password: Faker::Internet.password(8) })
 end
 
+User.create({first_name: "Johnny",
+             last_name: "Admin",
+             username: "i_am_admin",
+             email: "admin@admin.com",
+             password: "password",
+             confirmed_at: Time.now,
+             is_admin: true })
+
+User.create({first_name: "Timmy",
+             last_name: "User",
+             username: "normal_user",
+             email: "user@user.com",
+             password: "password",
+             confirmed_at: Time.now
+              })
+
 
 
 categories = ["Ruby", "JavaScript"]
