@@ -25,7 +25,7 @@ end
 
 drill_groups_ruby = [{name: "Operators", category: Category.all[0]}, {name: "Flow Control", category: Category.all[0]}, {name: "Loops", category: Category.all[0]}, {name: "Arrays", category: Category.all[0]}, {name: "Hashes", category: Category.all[0]}]
 drill_groups_ruby.each do |group|
-  DrillGroup.create(name: group.name, category: group.category)
+  DrillGroup.create(name: group[:name], category: group[:category])
 end
 
 
@@ -33,7 +33,7 @@ end
 operators    = [ {skill_level: 1, drill_group: DrillGroup.find_by_name("Operators"), description: "!(10 == 1 || 1000 == 1000)", hint: "hint goes here" },
                  {skill_level: 2, drill_group: DrillGroup.find_by_name("Operators"), description: "1 == 1 && 2 == 1", hint: "hint goes here" } ]
 operators.each do |drill|
-  Drill.create(skill_level: drill.skill_level, drill_group: drill.drill_group, description: drill.description, hint: drill.hint)
+  Drill.create(skill_level: drill[:skill_level], drill_group: drill[:drill_group], description: drill[:description], hint: drill[:hint])
 end
 
 
@@ -41,34 +41,34 @@ end
 flow_control = [ {skill_level: 1, drill_group: DrillGroup.find_by_name("Flow Control"), description: "Write a code that will check if a given variables a is greater than 10 then it will print 'Hello World'. If it's greater than 100 it will print 'Hello Universe'. Otherwise it will do nothing.", hint: "hint goes here" },
                  {skill_level: 3, drill_group: DrillGroup.find_by_name("Flow Control"), description: "Write code that takes a number and then prints the power of three of that number if it's divisible by three and it prints the power of two if it's divisible by 2 and prints the number itself otherwise.", hint: "hint goes here" } ]
 flow_control.each do |drill|
-  Drill.create(skill_level: drill.skill_level, drill_group: drill.drill_group, description: drill.description, hint: drill.hint)
+  Drill.create(skill_level: drill[:skill_level], drill_group: drill[:drill_group], description: drill[:description], hint: drill[:hint])
 end
 
 
 loops        = [ {skill_level: 2, drill_group: DrillGroup.find_by_name("Loops"), description: "Use while loop to print 1 to 15 (both numbers included)", hint: "hint goes here" },
                  {skill_level: 1, drill_group: DrillGroup.find_by_name("Loops"), description: "Print 10 to 20 using for loop in two ways: 1- using range with three dots 2- using range with two dots", hint: "hint goes here" } ]
 loops.each do |drill|
-  Drill.create(skill_level: drill.skill_level, drill_group: drill.drill_group, description: drill.description, hint: drill.hint)
+  Drill.create(skill_level: drill[:skill_level], drill_group: drill[:drill_group], description: drill[:description], hint: drill[:hint])
 end
 
 
 arrays       = [ {skill_level: 3, drill_group: DrillGroup.find_by_name("Arrays"), description: "Keep asking user for input and add their input to an array until they type 'exit'. After that print out the number of input they've entered. For example print: You've entered 10 inputs", hint: "hint goes here" },
                  {skill_level: 2, drill_group: DrillGroup.find_by_name("Arrays"), description: "Given an array of words. Return back an array of numbers that contains the length of each word in the first array in the same order.", hint: "hint goes here" } ]
-arrays.each = do |drill|
-  Drill.create(skill_level: drill.skill_level, drill_group: drill.drill_group, description: drill.description, hint: drill.hint)
+arrays.each do |drill|
+  Drill.create(skill_level: drill[:skill_level], drill_group: drill[:drill_group], description: drill[:description], hint: drill[:hint])
 end
 
 
 hashes       = [ {skill_level: 1, drill_group: DrillGroup.find_by_name("Hashes"), description: "Write a method that takes the hash and prints if city is large (more than 100,000) or small (otherwise). Printing something like: Vancouver is a large city", hint: "hint goes here" },
                  {skill_level: 3, drill_group: DrillGroup.find_by_name("Hashes"), description: "Ask the user for the following information: first name, last name and age. Store all the entered data in a hash and then loop through the hash and display results.", hint: "hint goes here" } ]
-hashes.each = do |drill|
-  Drill.create(skill_level: drill.skill_level, drill_group: drill.drill_group, description: drill.description, hint: drill.hint)
-e
+hashes.each do |drill|
+  Drill.create(skill_level: drill[:skill_level], drill_group: drill[:drill_group], description: drill[:description], hint: drill[:hint])
+end
 
 
 drill_groups_javascript = [{name: "Recursion", category: Category.all[1]}, {name: "Conditional Statements", category: Category.all[1]}, {name: "Arrays", category: Category.all[1]}, {name: "Math", category: Category.all[1]}, {name: "Validation", category: Category.all[1]}]
-drill_groups_javascript.each = do |group|
-  DrillGroup.create(name: group.name, category: group.category)
+drill_groups_javascript.each do |group|
+  DrillGroup.create(name: group[:name], category: group[:category])
 end
 
 
@@ -76,7 +76,7 @@ end
 recursion                 = [ {skill_level: 2, drill_group: DrillGroup.find_by_name("Recursion"), description: "Write a JavaScript program to get the integers in range (x, y).", hint: "hint goes here" },
                               {skill_level: 3, drill_group: DrillGroup.find_by_name("Recursion"), description: "Write a JavaScript program to get the first n Fibonacci numbers.", hint: "hint goes here" } ]
 recursion.each do |drill|
-  Drill.create(skill_level: drill.skill_level, drill_group: drill.drill_group, description: drill.description, hint: drill.hint)
+  Drill.create(skill_level: drill[:skill_level], drill_group: drill[:drill_group], description: drill[:description], hint: drill[:hint])
 end
 
 
@@ -84,7 +84,7 @@ end
 conditional_statements    = [ {skill_level: 1, drill_group: DrillGroup.find_by_name("Conditional Statements"), description: "Write a JavaScript for loop that will iterate from 0 to 15. For each iteration, it will check if the current number is odd or even, and display a message to the screen.", hint: "hint goes here" },
                               {skill_level: 2, drill_group: DrillGroup.find_by_name("Conditional Statements"), description: "Write a JavaScript program which iterates the integers from 1 to 100. But for multiples of three print 'Fizz' instead of the number and for the multiples of five print 'Buzz'. For numbers which are multiples of both three and five print 'FizzBuzz'.", hint: "hint goes here" } ]
 conditional_statements.each do |drill|
-  Drill.create(skill_level: drill.skill_level, drill_group: drill.drill_group, description: drill.description, hint: drill.hint)
+  Drill.create(skill_level: drill[:skill_level], drill_group: drill[:drill_group], description: drill[:description], hint: drill[:hint])
 end
 
 
@@ -92,7 +92,7 @@ end
 arrays                    = [ {skill_level: 1, drill_group: DrillGroup.find_by_name("Arrays"), description: "Write a JavaScript program to find the most frequent item of an array.", hint: "hint goes here" },
                               {skill_level: 2, drill_group: DrillGroup.find_by_name("Arrays"), description: "Write a JavaScript program to remove duplicate items from an array (ignore case sensitivity).", hint: "hint goes here" } ]
 arrays.each do |drill|
-  Drill.create(skill_level: drill.skill_level, drill_group: drill.drill_group, description: drill.description, hint: drill.hint)
+  Drill.create(skill_level: drill[:skill_level], drill_group: drill[:drill_group], description: drill[:description], hint: drill[:hint])
 end
 
 
@@ -100,14 +100,14 @@ end
 math                      = [ {skill_level: 3, drill_group: DrillGroup.find_by_name("Math"), description: "Write a JavaScript function to generate a random integer.", hint: "hint goes here" },
                               {skill_level: 1, drill_group: DrillGroup.find_by_name("Math"), description: "Write a JavaScript function to find the highest value in an array.", hint: "hint goes here" } ]
 math.each do |drill|
-  Drill.create(skill_level: drill.skill_level, drill_group: drill.drill_group, description: drill.description, hint: drill.hint)
+  Drill.create(skill_level: drill[:skill_level], drill_group: drill[:drill_group], description: drill[:description], hint: drill[:hint])
 end
 
 
 validation                = [ {skill_level: 2, drill_group: DrillGroup.find_by_name("Validation"), description: "Write a JavaScript program to test the first character of a string is uppercase or not.", hint: "hint goes here" },
                               {skill_level: 3, drill_group: DrillGroup.find_by_name("Validation"), description: "Write a JavaScript function to check whether a given value is an valid url or not.", hint: "hint goes here" } ]
 validation.each do |drill|
-  Drill.create(skill_level: drill.skill_level, drill_group: drill.drill_group, description: drill.description, hint: drill.hint)
+  Drill.create(skill_level: drill[:skill_level], drill_group: drill[:drill_group], description: drill[:description], hint: drill[:hint])
 end
 
 
