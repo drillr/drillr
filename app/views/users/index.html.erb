@@ -47,7 +47,11 @@
 
     <div class="col-md-4">
       <h1>YOU: </h1>
-      <h3><%= current_user.points_display %></h3>
+      <% if user_signed_in?%>
+        <h3><%= current_user.points_display %></h3>
+      <% else %>
+        <h3><%= link_to "Sign in", new_user_session_path %> to see how you stack up.</h3>
+      <% end %>
     </div>
 
 
