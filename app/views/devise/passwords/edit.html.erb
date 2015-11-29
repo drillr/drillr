@@ -2,12 +2,12 @@
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.hidden_field :reset_password_token %>
-  <%= f.input :password, "New password" %><br />
+  <%= f.input :password %><br />
   <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+    <em>(<%= @minimum_password_length %> characters minimum)</em><br/>
   <% end %>
-  <%= f.input :password_confirmation, "Confirm new password" %><br />
-  <%= f.submit "Change my password" %>
+  <%= f.input :password_confirmation %><br/>
+  <%= f.submit "Change my password", class: "btn btn-primary"  %>
 <% end %>
 
 <%= render "devise/shared/links" %>
