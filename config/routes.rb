@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   # user sign up, sign in, editing, etc
   devise_for :users, :controllers => { registrations: "registrations" }
 
+  root "welcome#index"
+  
   # 'show' will be a user's profile with their badges, drills, etc
   # 'index' will be the leaderboard
   resources :users, only: [:index, :show]
