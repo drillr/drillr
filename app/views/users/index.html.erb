@@ -9,39 +9,48 @@
   </head>
   <body>
 
-    <h1>Leaderboard</h1>
+    <div class="col-md-8">
+      <h1>Leaderboard</h1>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th>
-            Rank
-          </th>
-          <th>
-            Username
-          </th>
-          <th>
-            Points
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-          <% @users.each_with_index do |user, i|  %>
-            <tr>
-              <td>
-                <%= i + 1  %>
-              </td>
-              <td>
-                <%= link_to user.username, user %>
-              </td>
-              <td>
-                <%= user.points %>
-              </td>
-            </tr>
-        <% end %>
-      </tbody>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              Rank
+            </th>
+            <th>
+              Username
+            </th>
+            <th>
+              Points
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @users.each_with_index do |user, i|  %>
+              <tr>
+                <td>
+                  <%= i + 1  %>
+                </td>
+                <td>
+                  <%= link_to user.username, user %>
+                </td>
+                <td>
+                  <%= user.points %>
+                </td>
+              </tr>
+          <% end %>
+        </tbody>
 
-    </table>
+      </table>
+    </div>
+
+    <div class="col-md-4">
+      <h1>YOU: </h1>
+      <h3><%= current_user.points_display %></h3>
+    </div>
+
+
 
 
   </body>

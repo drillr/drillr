@@ -14,4 +14,10 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  # TODO: refactor (this exists in Achievement as well)
+  def points_display
+    ActionController::Base.helpers.pluralize(points, "point")
+  end
+
 end
