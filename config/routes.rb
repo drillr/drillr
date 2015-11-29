@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: "registrations" }
 
   root "welcome#index"
-  
+
   # 'show' will be a user's profile with their badges, drills, etc
   # 'index' will be the leaderboard
   resources :users, only: :show
   get "/leaderboard" => "users#index"
+  get "/dashboard" => "users#dashboard"
 
   # # /categories  = a list of all the categories
   # # /categories/ruby = a list of all the drill groups in that category

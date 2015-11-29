@@ -1,9 +1,19 @@
+
 <h1><%= @user.username %></h1>
 <p><%= @user.full_name %></p>
 <p>Email: <%= mail_to @user.email %></p>
 <h3>Achievements</h3>
 <p>
-  to do..
+  <% if @user.achievements.count == 0 %>
+    <p>This user has no achievements yet.</p>
+  <% else %>
+    <% @user.achievements.each do |a| %>
+      <div>
+        <p><%= a.name %></p>
+        <p><%= a.description %></p>
+      </div>
+    <% end %>
+  <% end %>
 </p>
 
 <h3>Completed Drills</h3>
@@ -12,5 +22,6 @@
 </p>
 <hr>
 <% if can? :manage, @user %>
-  <%= link_to "delete", edit_user_registration_path, method: :delete %>
+  <%= link_to "update profile", edit_user_registration_path %>
+  <%= link_to "delete account", edit_user_registration_path, method: :delete, data: { confirm: "Really delete your account? You cannot undo this." } %>
 <% end %>

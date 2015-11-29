@@ -14,6 +14,9 @@ class Ability
       can [:create, :destroy], UserAchievement
     end
 
+    can :manage, User do |u|
+      user.is_admin? || u == user
+    end
 
 
     # Define abilities for the passed in user here. For example:
