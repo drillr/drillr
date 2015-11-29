@@ -9,7 +9,13 @@
     <%= f.label :drill_group_id %>
     <%= f.collection_select :drill_group_id, DrillGroup.order(:name), :id, :name, {class: "form-control"} %>
   </div>
-  <%=  %>
+  <div class="nested-solutions">
+    <h3>Solutions</h3>
+    <%= f.fields_for :solutions do |builder|  %>
+        <%= builder.label :body%>
+        <%= builder.text_area :body%>
+    <% end %>
+  </div>
 </div>
 <%= f.submit class: "btn btn-primary" %>
 <% end %>

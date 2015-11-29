@@ -4,6 +4,7 @@ class DrillsController < ApplicationController
 
   def new
     @drill = Drill.new
+    3.times { @drill.solutions.build }
   end
 
   def create
@@ -32,7 +33,7 @@ class DrillsController < ApplicationController
   end
 
   def show
-
+    @solutions = @drill.solutions
   end
 
   def destroy
@@ -46,7 +47,8 @@ class DrillsController < ApplicationController
 private
 
   def drill_params
-    params.require(:drill).permit(:title, :description, :base_points, :skill_level, :drill_group_id, :hint)
+    params.require(:drill).permit(:title, :description, :base_points, :skill_level,
+                                  :drill_group_id, :hint, {solutions_attributes: [:body]})
   end
 
   def find_drill
