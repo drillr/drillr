@@ -34,7 +34,7 @@ class DrillGroupsController < ApplicationController
     drill_group_params
 
     if @drill_group.update(drill_group_params)
-      redirect_to(category_drill_group_path(@drill_group.category, @drill_group), notice: "Drill Group Created!")
+      redirect_to(category_drill_group_path(@drill_group.category, @drill_group), notice: "Drill Group Updated!")
     else
       render :edit
     end

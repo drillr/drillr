@@ -1,5 +1,7 @@
 class SolutionsController < ApplicationController
 
+  before_action :find_solution, only: [ :edit, :update, :destroy]
+
   def new
     @solution = Solution.new
   end
@@ -9,7 +11,7 @@ class SolutionsController < ApplicationController
     @solution = Solution.new(solution_params)
 
     if @solution.save
-      redirect_to(category_solution_path(@solution.category, @solution), notice: "Drill Group Created!")
+      redirect_to(drill_path(@solution.drill), notice: "Solution Created!")
     else
       render :new
     end
@@ -23,7 +25,7 @@ class SolutionsController < ApplicationController
     solution_params
 
     if @solution.update(solution_params)
-      redirect_to(category_solution_path(@solution.category, @solution), notice: "Drill Group Created!")
+      redirect_to(drill_path(@solution.drill), notice: "Solution Updated!")
     else
       render :edit
     end
@@ -32,7 +34,7 @@ class SolutionsController < ApplicationController
   def destroy
     @solution.destroy
 
-    redirect_to category_path(@solution.category), alert: "Drill Group deleted!"
+    redirect_to(drill_path(@solution.drill), alert: "Drill Group deleted!"
   end
 
 
