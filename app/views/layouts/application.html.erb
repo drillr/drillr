@@ -26,8 +26,9 @@
         </ul></div>
 
           <li><%= link_to "View Categories", categories_path %></li>
-
-        <%= image_tag("star.jpg", class: "star") %>
+          <%= link_to root_path do %>
+        <%= image_tag("star.png", class: "star") %>
+        <% end %>
             <div class="pull-right">
               <% if user_signed_in? %>
                 <li><%= link_to "View Profile", user_path(current_user) %></li>
