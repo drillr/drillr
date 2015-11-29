@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
   validates :username, presence: true
 
+  has_many :user_achievements
+  has_many :achievements, through: :user_achievements
+
   def full_name
     "#{first_name} #{last_name}"
   end
