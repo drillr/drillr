@@ -10,3 +10,7 @@
 <p>
   to do...
 </p>
+<hr>
+<% if can? :manage, @user %>
+  <%= link_to "delete", edit_user_registration_path, method: :delete %>
+<% end %>
