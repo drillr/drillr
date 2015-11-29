@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :drills do
     resources :solutions
     resources :answers
-    resources :user_drills
+    resources :user_drills, only: [:create, :destroy]
   end
 
   resources :achievements

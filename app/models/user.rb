@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   has_many :user_achievements
   has_many :achievements, through: :user_achievements
 
+  has_many :user_drills, dependent: :destroy
+  has_many :selected_drills, through: :user_drills, source: :drill
+
   def full_name
     "#{first_name} #{last_name}"
   end

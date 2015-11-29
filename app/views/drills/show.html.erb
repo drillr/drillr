@@ -27,6 +27,17 @@
 
 <%= render "solutions/solution" %>
 
+<%#= render "answers/form" %>
+
+<% if user_signed_in? && @drill.selected_drill_by?(current_user) %>
+  <%= link_to fa_icon("minus-square-o"), drill_user_drill_path(@drill, @drill.user_drill_for(current_user)), method: :delete, class: "icon-big" %>
+<% else %>
+  <%= link_to fa_icon("plus-square"), drill_user_drills_path(@drill), method: :post, class: "icon-big" %>
+<% end %>
+
+<%= pluralize(@drill.user_drills.count, "user") %> have added this drill.
+
+
 <% if @drill.answers.present? %>
   <%= render "answers/answer" %>
 <% else %>
