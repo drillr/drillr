@@ -12,7 +12,7 @@
     <div class="">
       <% @category.drill_groups.each do |drill_group| %>
       <div class="">
-        <%= drill_group.name %>
+        <%= link_to drill_group.name, category_drill_group_path(@category, drill_group)%>
       </div>
       <% end %>
     </div>
