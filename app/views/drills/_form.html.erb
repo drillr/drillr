@@ -1,0 +1,15 @@
+<%= simple_form_for @drill do |f|%>
+<div class="form-group">
+  <%= f.input :title, input_html: {class: "form-control"} %>
+  <%= f.input :description, input_html: {class: "form-control"} %>
+  <%= f.input :base_points, input_html: {class: "form-control"} %>
+  <%= f.input :skill_level, input_html: {class: "form-control"} %>
+  <%= f.input :hint, input_html: {class: "form-control"} %>
+  <div class="form-group">
+    <%= f.label :drill_group_id %>
+    <%= f.collection_select :drill_group_id, DrillGroup.order(:name), :id, :name, {class: "form-control"} %>
+  </div>
+  <%=  %>
+</div>
+<%= f.submit %>
+<% end %>
