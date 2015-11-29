@@ -1,7 +1,7 @@
 class Drill < ActiveRecord::Base
   belongs_to  :drill_group
   has_many    :solutions, dependent: :destroy
-  has_many    :answers
+  has_many    :answers, dependent: :destroy
 
   # We can add multiple solutions at the same time as creating a drill object
   # Blank solutions will not be saved
