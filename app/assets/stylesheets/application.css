@@ -20,8 +20,8 @@
   width: 32px;
   margin-left: 340px;
   margin-top: 5px;
-
 }
+
 body {
   margin-top: 75px;
 }
@@ -32,7 +32,6 @@ body {
     padding: 20px;
     line-height: 54px;
  }
-
 
 .navbar li a {
   color: #eee !important;
@@ -56,22 +55,12 @@ ul li a:hover {
    background-size: cover;
    width: 100%;
    min-height:100%;
-
  }
-
 
  .pull-right {
     margin-right: 25px;
  }
 
- .app-title {
-   font-family: 'armalite_rifleregular';
-   font-size: 110px;
-   text-align: center;
- }
-
-
  .navbar {
    background-color: #585755;
-
  }
