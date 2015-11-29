@@ -19,16 +19,13 @@ class AnswersController < ApplicationController
         @user.points = @user.points + 10
 
         achievements = Achievement.all
-        # byebug
 
         user_achievements_array = []
         achievements.each do |achievement|
           if @user.points >= achievement.point_value
-        byebug
-            user_achievements_array.push(achievement.name)
+            user_achievements_array.push(achievement.id)
           end
-          byebug
-          @user.achievements = user_achievements_array
+          @user.achievement_ids = user_achievements_array
         end
 
         @user.save
