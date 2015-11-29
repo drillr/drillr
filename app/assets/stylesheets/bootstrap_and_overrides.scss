@@ -7,6 +7,7 @@ textarea:focus,
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="datetime"]:focus,
+input[type="description"]:focus,
 input[type="datetime-local"]:focus,
 input[type="date"]:focus,
 input[type="month"]:focus,
@@ -19,8 +20,8 @@ input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
 .uneditable-input:focus {
-  border-color: #4F6F40;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #4F6F40;
+  border-color: #4F6F40!important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #4F6F40!important;
   outline: 0 none;
 }
 
@@ -71,4 +72,17 @@ btn-primary {
 
 .dropdown-menu {
   padding: 0px 0;
+}
+
+.alert {
+  font-family: 'armystampmedium';
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: 'squares_boldregular';
+  font-size: 14px;
+  padding: 3px;
 }
