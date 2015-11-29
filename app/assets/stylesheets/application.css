@@ -14,18 +14,63 @@
  *= require_self
  */
 
- li {
-   list-style-type: none;
-   display: inline;
-   padding: 20px;
-   line-height: 54px;
-   }
+.star {
+  height: 32px;
+  width: 32px;
+  margin-left: 340px;
+  margin-top: 5px;
 
- .pull-right {
-   margin-right: 25px;
+}
+body {
+  margin-top: 75px;
+}
+
+ li {
+    list-style-type: none;
+    display: inline;
+    padding: 20px;
+    line-height: 54px;
  }
 
-.app-title {
-  text-align:center;
-  padding: 150px;
-}
+
+.navbar li a {
+  color: #eee !important;
+  text-decoration: none;
+  }
+
+  a {
+  color: #4F6F40;
+  }
+
+ul li a:hover {
+  opacity: .5 !important;
+  text-decoration:/ none;
+  }
+
+ .main-banner {
+   background: url(main_banner.jpg) no-repeat center center fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+   width: 100%;
+   min-height:100%;
+
+ }
+
+
+ .pull-right {
+    margin-right: 25px;
+ }
+
+ .app-title {
+   font-family: 'armalite_rifleregular';
+   font-size: 110px;
+   text-align: center;
+ }
+
+
+ .navbar {
+   background-color: #585755;
+
+ }
