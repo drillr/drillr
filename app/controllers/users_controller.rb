@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # index and show. all the user registration, sign in/out, and account
   # editing is handled by Devise's default controller.
   def index
-    @users = User.all
+    @users = User.order(points: :desc).limit(25)
   end
 
   def show
