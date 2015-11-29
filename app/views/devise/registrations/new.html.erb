@@ -1,10 +1,12 @@
-<h2>Sign up</h2>
+<h2>Enlist</h2>
+<p>Let's see what you're made of.</p>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.input :first_name, autofocus: true %>
   <%= f.input :last_name %>
   <%= f.input :username %>
   <%= f.input :email %>
+  <%= f.input :avatar %>
   <%= f.input :password %>
   <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>

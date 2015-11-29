@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :user_drills, dependent: :destroy
   has_many :selected_drills, through: :user_drills, source: :drill
 
+  mount_uploader :avatar, ImageUploader
+
   def full_name
     "#{first_name} #{last_name}"
   end
