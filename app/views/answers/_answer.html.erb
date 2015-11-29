@@ -1,4 +1,6 @@
 <h2>Answers</h2>
 <div class="well">
-    <%= answer.body %>
+    <% @drill.answers.each do |answer| %>
+      <%= answer.body %>
+    <% end  %>
 </div>

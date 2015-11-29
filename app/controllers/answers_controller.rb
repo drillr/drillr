@@ -6,14 +6,11 @@ class AnswersController < ApplicationController
 
   def create
     @drill = Drill.find params[:drill_id]
-
-    answer_params
     @answer = Answer.new(answer_params)
-
     @answer.user = current_user
-
+    @answer.drill = @drill
     if @answer.save
-      redirect_to(drill_path(@answer.drill), notice: "Answer Created!")
+      redirect_to drill_path(@drill), notice: "Answer Created!"
     else
       render :new
     end
@@ -22,7 +19,7 @@ class AnswersController < ApplicationController
   def destroy
     @answer.destroy
 
-    redirect_to(drill_path(@answer.drill), alert: "Drill Group Deleted!"
+    redirect_to drill_path(@answer.drill), alert: "Answer Deleted!"
   end
 
   def answer_params

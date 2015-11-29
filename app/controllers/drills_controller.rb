@@ -34,6 +34,7 @@ class DrillsController < ApplicationController
 
   def show
     @solutions = @drill.solutions
+    @answer = Answer.new
   end
 
   def destroy
