@@ -9,10 +9,36 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
     @answer.user = current_user
     @answer.drill = @drill
-    if @answer.save
-      redirect_to drill_path(@drill), notice: "Answer Created!"
+
+    @user = current_user
+    @solutions = @drill.solutions
+
+    @solutions.each do |solution|
+      if @answer.body == solution.body
+        @match = true
+        @user.points = @user.points + 10
+
+        achievements = Achievement.all
+
+        user_achievements_array = []
+        achievements.each do |achievement|
+          if @user.points >= achievement.point_value
+            user_achievements_array.push(achievement.id)
+          end
+          @user.achievement_ids = user_achievements_array
+        end
+
+        @user.save
+      else
+        @match = false
+      end
+    end
+
+    if @match == true && @answer.save
+      redirect_to drill_path(@drill), notice: "CORRECT....OOOOHHHH GOOD FOR YOU, DON'T GET COMFORTABLE!"
     else
-      render :new
+        flash[:alert] = "WHAT WAS THAT PRIVATE!? WRONG!!! DROP DOWN....GIVE ME 20....AND TRY AGAIN!"
+        render "/drills/show"
     end
   end
 
