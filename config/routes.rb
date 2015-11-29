@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   
   # 'show' will be a user's profile with their badges, drills, etc
   # 'index' will be the leaderboard
-  resources :users, only: [:index, :show]
+  resources :users, only: :show
+  get "/leaderboard" => "users#index"
 
   # # /categories  = a list of all the categories
   # # /categories/ruby = a list of all the drill groups in that category
