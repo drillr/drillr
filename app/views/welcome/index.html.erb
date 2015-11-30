@@ -1,29 +1,25 @@
 
   <div class="app-title">
     <p>Drop down and give me 20, private!</p>
-      <!-- <div id="r">R</div>  -->
   </div>
-  <div class="app-title drill">
-    <p>
-      DRILLR
-    </p>
 
-      </div>
-<!-- <div id="yelling">
+  <div class="drill">
+    <p>DRILL<span id="r">R</span></p>
+  </div>
 
-</div> -->
-  <!-- <img src="images/yelling_cartoon.jpg" alt="yelling" id="yelling" /> -->
-<%=image_tag('yelling_cartoon.jpg', id:'yelling') %>
-  <div class="login-form">
+  <div class="form-position">
+  <%=image_tag('yelling_cartoon.jpg', id:'yelling') %>
+    <div class="login-form">
 
-    <h2 id="login-yell">Log in, Private!</h2>
-<% if !user_signed_in? %>
-      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= f.input :email, autofocus: true %>
-        <%= f.input :password %>
-        <%= f.submit "Log in",  class: "btn btn-primary" %>
-      <% end %>
-      <% end %>
+      <h2 id="login-yell">Log in, Private!</h2>
+        <% if !user_signed_in? %>
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= f.input :email, autofocus: true %>
+            <%= f.input :password %>
+            <%= f.submit "Log in",  class: "btn btn-primary" %>
+          <% end %>
+        <% end %>
     <br/>
-<%= link_to "Register", new_user_registration_path, class: "btn btn-primary register" %>
+  <%= link_to "Register", new_user_registration_path, class: "btn btn-primary register" %>
+    </div>
   </div>
