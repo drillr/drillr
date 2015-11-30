@@ -2,11 +2,29 @@
 <h1><%= @user.username %></h1>
 
 <h3>Training Plan</h3>
-<p>Plans go here..</p>
+<% if @user.user_drills.length > 0 %>
+  <% @user.user_drills.each do |user_drill| %>
+    <% if !user_drill.completed %>
+        <p><%= link_to user_drill.drill.title, drill_path(user_drill.drill) %></p>
+    <% end %>
+  <% end %>
+<% else %>
+  <p><%= link_to "No Guts, No Glory. Add some drills!", categories_path %></p>
+<% end %>
 
 <h3>Achievements</h3>
+<% @user.achievements.each do |achievement| %>
+<div class="">
+  <h5><%= achievement.name %></h5>
+  <p><%= achievement.description %></p>
+  <p><%= achievement.point_value %></p>
+</div>
+<% end %>
+
 
 <h3>Completed Drills</h3>
-<p>
-  to do...
-</p>
+<% @user.user_drills.each do |user_drill| %>
+  <% if user_drill.completed %>
+      <p><%= link_to user_drill.drill.title, drill_path(user_drill.drill) %></p>
+  <% end %>
+<% end %>
