@@ -255,3 +255,7 @@ borders.each do |drill|
   d = Drill.create!(title: drill[:title], base_points: 100, skill_level: drill[:skill_level], drill_group: drill[:drill_group], description: drill[:description], hint: drill[:hint])
   Solution.create!(drill: d, body: drill[:solution])
 end
+
+
+u = User.find_by_email("user@user.com")
+u.achievement_ids = [1,2,3,4]
