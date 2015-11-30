@@ -45,8 +45,9 @@ btn-primary {
 .navbar-brand {
   color: #eee!important;
   font-family: 'armalite_rifleregular';
-  margin-top: 2px;
+  margin-top: 4px;
   padding-right: 50px;
+  font-size: 26px;
 }
 
 
@@ -83,6 +84,10 @@ button,
 select,
 textarea {
   font-family: 'squares_boldregular';
-  font-size: 14px;
+  font-size: 13px;
   padding: 3px;
+}
+
+.btn-sm, .btn-group-sm > .btn, .btn-group-sm > .btn {
+  background-color: #555;
 }
