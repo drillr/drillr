@@ -1,102 +1,69 @@
 
 <% if !@user.is_admin %>
 
-<h1><%= @user.username %> - DASHBOARD</h1>
-  <div class="user-profile-points">
-    <h2><%= @user.points_display %></h2>
-  </div>
-<div class="col-md-6">
-<h3>Training Plan</h3>
-<% if @user.user_drills.length > 0 %>
-  <% @user.user_drills.each do |user_drill| %>
-    <% if !user_drill.completed %>
-        <p><%= link_to user_drill.drill.title, drill_path(user_drill.drill) %></p>
-    <% end %>
-  <% end %>
-<% else %>
-  <h4><%= link_to "No Guts, No Glory. Add some drills!", categories_path %></h4>
-<% end %>
-<br />
-<br />
-<div class="drills-completed">
-  <h3>Drills Completed</h3>
-<% @user.user_drills.each do |user_drill| %>
-  <% if user_drill.completed %>
-      <p><%= link_to user_drill.drill.title, drill_path(user_drill.drill) %></p>
-  <% end %>
-<% end %>
-</div>
-</div>
-<div class="achievements col-md-6">
-<h3>Achievements <small><%= link_to "view all", achievements_path %></small></h3>
-<% @user.achievements.each do |achievement| %>
-<div class="">
-    <div>
-      <%= image_tag achievement.badge.thumbnail.url, class: "img-thumbnail pull-left", style: "margin-right: 0.25em" %>
-    </div>
-    <h5><%= achievement.name %></h5>
-  <div class="clearfix"></div>
-</div>
-
-    <div class="dashboard">
-    <h1><%= @user.username %></h1>
-    </div>
-
-      <div class="training-plan">
-      <h3>Training Plan</h3>
-      <% if @user.user_drills.length > 0 %>
-        <% @user.user_drills.each do |user_drill| %>
-          <% if !user_drill.completed %>
-              <p><%= link_to user_drill.drill.title, drill_path(user_drill.drill) %></p>
+          <h1><%= @user.username %> - DASHBOARD</h1>
+            <div class="user-profile-points">
+              <h2><%= @user.points_display %></h2>
+            </div>
+          <div class="col-md-6">
+          <h3>Training Plan</h3>
+          <% if @user.user_drills.length > 0 %>
+            <% @user.user_drills.each do |user_drill| %>
+              <% if !user_drill.completed %>
+                  <p><%= link_to user_drill.drill.title, drill_path(user_drill.drill) %></p>
+              <% end %>
+            <% end %>
+          <% else %>
+            <h4><%= link_to "No Guts, No Glory. Add some drills!", categories_path %></h4>
           <% end %>
-        <% end %>
-      <% else %>
-        <h4><%= link_to "No Guts, No Glory. Add some drills!", categories_path %></h4>
-      <% end %>
-      </div>
-      <div class="achievements">
-      <h3>Achievements</h3>
-      <% @user.achievements.each do |achievement| %>
-        <h5><%= achievement.name %></h5>
-        <p><%= achievement.description %></p>
-        <p><%= achievement.point_value %></p>
-      <% end %>
-      </div>
+          <br />
+          <br />
+          <div class="drills-completed">
+            <h3>Drills Completed</h3>
+          <% @user.user_drills.each do |user_drill| %>
+            <% if user_drill.completed %>
+                <p><%= link_to user_drill.drill.title, drill_path(user_drill.drill) %></p>
+            <% end %>
+          <% end %>
+          </div>
+          </div>
+          <div class="achievements col-md-6">
+          <h3>Achievements <small><%= link_to "view all", achievements_path %></small></h3>
+          <% @user.achievements.each do |achievement| %>
+          <div class="">
+              <div>
+                <%= image_tag achievement.badge.thumbnail.url, class: "img-thumbnail pull-left", style: "margin-right: 0.25em" %>
+              </div>
+              <h5><%= achievement.name %></h5>
+            <div class="clearfix"></div>
+          </div>
+          <% end %>
 
-
-      <div class="drills-completed">
-        <h3>Drills Completed</h3>
-      <% @user.user_drills.each do |user_drill| %>
-        <% if user_drill.completed %>
-            <p><%= link_to user_drill.drill.title, drill_path(user_drill.drill) %></p>
-        <% end %>
-      <% end %>
-      </div>
 
 <% else %>
 
-  <h1>ADMIN DASHBOARD</h1>
+      <h1>ADMIN DASHBOARD</h1>
 
-  <div class="dashboard">
-  <h1><%= @user.username %></h1>
-  </div>
+      <div class="dashboard">
+      <h1><%= @user.username %></h1>
+      </div>
 
-  <div class="category-columns col-md-6">
-    <div class="">
-      <%= link_to "New Category", new_category_path, class: "btn btn-default btn-lg" %>
-    </div>
-    <div class="">
-      <%= link_to "New Drill Group", new_drill_group_path, class: "btn btn-default btn-lg" %>
-    </div>
-  </div>
+      <div class="category-columns col-md-6">
+        <div class="">
+          <%= link_to "New Category", new_category_path, class: "btn btn-default btn-lg" %>
+        </div>
+        <div class="">
+          <%= link_to "New Drill Group", new_drill_group_path, class: "btn btn-default btn-lg" %>
+        </div>
+      </div>
 
-  <div class="category-columns col-md-6">
-    <div class="">
-      <%= link_to "New Drill", new_drill_path, class: "btn btn-default btn-lg" %>
-    </div>
-    <div class="">
-      <%= link_to "New Achievement", new_achievement_path, class: "btn btn-default btn-lg" %>
-    </div>
-  </div>
+      <div class="category-columns col-md-6">
+        <div class="">
+          <%= link_to "New Drill", new_drill_path, class: "btn btn-default btn-lg" %>
+        </div>
+        <div class="">
+          <%= link_to "New Achievement", new_achievement_path, class: "btn btn-default btn-lg" %>
+        </div>
+      </div>
 
 <% end %>
