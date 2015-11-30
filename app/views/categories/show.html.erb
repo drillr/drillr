@@ -2,7 +2,8 @@
     <h1><%= @category.name %> Drills</h1>
     </div>
 
-      <% @category.drill_groups.each do |drill_group| %>
+    <% @category.drill_groups.each do |drill_group| %>
+    <div class="col-md-6">
       <div class="drill-group-name">
         <h4><%= drill_group.name %></h4>
         <hr>
@@ -18,5 +19,7 @@
             </div>
 
         <% end %>
+      </div>
       <% end %>
+
 <br/><br/>

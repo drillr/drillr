@@ -83,17 +83,28 @@
   font-family: 'armalite_rifleregular';
   font-size: 170px;
   position: relative;
-  left: 240px;
+  left: 5px;
   margin-top: -40px;
 }
 
 .form-position {
   position: fixed;
-  top: 780px;
+  top: 790px;
   left: 300px;
   float:right;
 }
 
 #r {
   color: #4F6F40;
+}
+
+.view-drills-button {
+  float: right;
+  top: 600px;
+  right: 40px;
+  position: fixed;
+  font-size: 20px;
+  background-color: white;
+  font-family: 'squares_boldregular';
+  padding: 5px;
 }
