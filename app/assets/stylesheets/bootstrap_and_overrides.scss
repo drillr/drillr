@@ -45,7 +45,7 @@ btn-primary {
 .navbar-brand {
   color: #eee!important;
   font-family: 'armalite_rifleregular';
-  margin-top: 4px;
+  margin-top: 10px;
   padding-right: 50px;
   font-size: 26px;
 }
@@ -77,7 +77,7 @@ btn-primary {
 
 .alert {
   font-family: 'armystampmedium';
-  font-size: 44px;
+  font-size: 40px;
   margin-top: 10px;
 }
 
@@ -96,4 +96,9 @@ textarea {
   font-family: 'squares_boldregular';
   font-size: 13px;
   padding: 3px;
+}
+
+.btn-lg, .btn-group-lg > .btn {
+    padding: 16px 25px;
+    font-size: 16px;
 }
