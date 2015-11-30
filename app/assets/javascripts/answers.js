@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $("#use-hint").on("click", function() {
+  $("html,body").on("click", "#use-hint", function() {
     console.log("clicked on use-hint");
     // use ajax to get the hint from the server, callback will:
     // display the hint:
