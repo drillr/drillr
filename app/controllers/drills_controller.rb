@@ -35,6 +35,11 @@ class DrillsController < ApplicationController
   def show
     @solutions = @drill.solutions
     @answer = Answer.new
+
+    respond_to do |format|
+      format.html { render }
+      format.json { render json: @drill }
+    end
   end
 
   def destroy
