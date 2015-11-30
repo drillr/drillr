@@ -1,3 +1,22 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.user-profile-avatar {
+  padding: 10px;
+  position: relative;
+  display: inline;
+  }
+
+.user-profile-name h1 {
+  padding-left: 150px;
+  margin-top: -10px;
+}
+
+.user-profile-points h2 {
+  float: right;
+  color: #FF0000;
+  opacity: .8;
+  font-size: 50px;
+  margin-top: -65px;
+}
+
+.user-achievements {
+  margin-top: 100px;
+}
