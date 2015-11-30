@@ -18,9 +18,14 @@
 .star {
   height: 32px;
   width: 32px;
-  margin-left: 340px;
-  margin-top: 5px;
-}
+  margin-top: 3px;
+  }
+
+.star-align {
+  display:inline-block;
+  text-align:center;
+  width: 45%
+  }
 
 body {
   margin-top: 75px;
@@ -33,6 +38,23 @@ body {
     line-height: 54px;
  }
 
+ tr:nth-child(odd) {
+   background: #eee;
+ }
+
+ tr:first-child a {
+   color: #FF0000;
+   opacity: .8;
+   font-weight: bold;
+ }
+
+ .table > thead > tr > th {
+   vertical-align: bottom;
+   border-bottom: 2px solid #ddd;
+   background-color: #fefefe;
+ }
+
+
 .navbar li a {
   color: #eee !important;
   text-decoration: none;
@@ -42,10 +64,37 @@ body {
   color: #4F6F40;
   }
 
+.btn-lg, .btn-group-lg > .btn {
+  padding: 16px 25px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+  text-align:center;
+  vertical-align: middle;
+  width: 50%;
+  margin-left: 25%;
+  background-color: #4F6F40;
+  color: white;
+}
+
+.category-columns {
+  padding: 16px 20px;
+  font-family: 'squares_boldregular';
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+  background-color: #4F6F40;
+  color: white;
+}
+
 ul li a:hover {
   opacity: .5 !important;
   text-decoration:/ none;
   }
+
+hr {
+  border-color: #aaa;
+}
 
  .main-banner {
    background: url(main_banner.jpg) no-repeat center center fixed;
@@ -63,4 +112,5 @@ ul li a:hover {
 
  .navbar {
    background-color: #585755;
- }
+   width: 100%;
+   }

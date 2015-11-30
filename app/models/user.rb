@@ -25,4 +25,8 @@ class User < ActiveRecord::Base
     ActionController::Base.helpers.pluralize(points, "point")
   end
 
+  def has_answered_drill?(drill)
+    drill.answers.where(user: self).any?
+  end
+
 end

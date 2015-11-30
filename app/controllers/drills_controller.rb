@@ -1,6 +1,7 @@
 class DrillsController < ApplicationController
 
   before_action :find_drill, only: [:edit, :update, :show, :destroy]
+  load_and_authorize_resource
 
   def new
     @drill = Drill.new
@@ -35,6 +36,17 @@ class DrillsController < ApplicationController
   def show
     @solutions = @drill.solutions
     @answer = Answer.new
+
+    if session[:new_achievement_ids]
+      @new_achievements = []
+      session[:new_achievement_ids].each do |achievement|
+        @new_achievements.push(Achievement.find(achievement))
+      end
+    end
+    respond_to do |format|
+      format.html { render }
+      format.json { render json: @drill }
+    end
   end
 
   def destroy

@@ -1,9 +1,14 @@
-<div class="panel panel-default">
-  <%= image_tag @user.avatar.normal_size.url, class: "img-thumbnail pull-left" %>
-  <h1><%= @user.username %></h1>
-  <h2><%= @user.points_display %></h2>
-</div>
-<h3>Achievements</h3>
+  <div class="user-page">
+    <div class="user-profile-avatar">
+    <%= image_tag @user.avatar.normal_size.url, class: "img-thumbnail pull-left" %>
+  </div>
+  <div class="user-profile-name">
+    <h1><%= @user.username %></h1>
+  </div>
+  <div class="user-profile-points">
+    <h2><%= @user.points_display %></h2>
+  </div>
+<h3 class="user-achievements">Achievements</h3>
 <p>
   <% if @user.achievements.count == 0 %>
     <p>This user has no achievements yet.</p>
@@ -23,6 +28,7 @@
 </p>
 <hr>
 <% if can? :manage, @user %>
-  <%= link_to "update profile", edit_user_registration_path %>
-  <%= link_to "delete account", edit_user_registration_path, method: :delete, data: { confirm: "Really delete your account? You cannot undo this." } %>
+  <%= link_to "Update profile", edit_user_registration_path %> |
+  <%= link_to "Delete account", edit_user_registration_path, method: :delete, data: { confirm: "Really delete your account? You cannot undo this." } %>
 <% end %>
+</div>

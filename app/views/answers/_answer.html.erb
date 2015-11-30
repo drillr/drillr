@@ -1,6 +1,7 @@
 <h2>Answers</h2>
-<div class="well">
     <% @drill.answers.each do |answer| %>
-      <%= answer.body %>
+    <div class="panel panel-default">
+      <p><strong><%= answer.user.username %></strong></p>
+      <pre style="margin-bottom: 3em"><%= answer.body %></pre>
+    </div>
     <% end  %>
-</div>

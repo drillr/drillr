@@ -1,12 +1,34 @@
 <h1>DASHBOARD</h1>
+<div class="dashboard">
 <h1><%= @user.username %></h1>
-
+</div>
+<div class="training-plan">
 <h3>Training Plan</h3>
-<p>Plans go here..</p>
-
+<% if @user.user_drills.length > 0 %>
+  <% @user.user_drills.each do |user_drill| %>
+    <% if !user_drill.completed %>
+        <p><%= link_to user_drill.drill.title, drill_path(user_drill.drill) %></p>
+    <% end %>
+  <% end %>
+<% else %>
+  <p><%= link_to "No Guts, No Glory. Add some drills!", categories_path %></p>
+<% end %>
+</div>
+<div class="achievements">
 <h3>Achievements</h3>
+<% @user.achievements.each do |achievement| %>
+  <h5><%= achievement.name %></h5>
+  <p><%= achievement.description %></p>
+  <p><%= achievement.point_value %></p>
+</div>
+<% end %>
 
-<h3>Completed Drills</h3>
-<p>
-  to do...
-</p>
+
+<div class="drills-completed">
+  <h3>Drills Completed</h3>
+<% @user.user_drills.each do |user_drill| %>
+  <% if user_drill.completed %>
+      <p><%= link_to user_drill.drill.title, drill_path(user_drill.drill) %></p>
+  <% end %>
+<% end %>
+</div>

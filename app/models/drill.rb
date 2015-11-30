@@ -27,4 +27,15 @@ class Drill < ActiveRecord::Base
     user_drills.find_by_user_id(user.id)
   end
 
+  def skill_level_display
+    case skill_level
+    when 1
+      "Maggot (Beginner)"
+    when 2
+      "Grunt (Intermediate)"
+    when 3
+      "Grizzled Veteran (Advanced)"
+    end
+  end
+
 end

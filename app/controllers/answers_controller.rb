@@ -9,10 +9,59 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
     @answer.user = current_user
     @answer.drill = @drill
-    if @answer.save
-      redirect_to drill_path(@drill), notice: "Answer Created!"
+
+    @user = current_user
+    @solutions = @drill.solutions
+
+    @solutions.each do |solution|
+      if @answer.body == solution.body
+        @match = true
+        earned_points = @drill.base_points * @drill.skill_level
+        original_points = @drill.base_points * @drill.skill_level
+        if params[:answer][:used_hint]
+          earned_points *= 0.5
+          Rails.logger.info "Used hint, so user will earn #{earned_points} instead of #{original_points}"
+        end
+
+        @user.points = @user.points + earned_points
+
+        # add to training plan
+        selected_drill = UserDrill.where(user: @user, drill: @drill)
+        if !selected_drill.present?
+          Rails.logger.info "The user has not added this drill yet, so adding it for them and marking it complete..."
+          selected_drill = UserDrill.new
+          selected_drill.user = @user
+          selected_drill.drill = @drill
+        end
+
+        selected_drill.completed = true
+        selected_drill.save
+
+        achievements = Achievement.all
+
+        current_achievements_array = @user.achievement_ids
+        @new_achievement_array = []
+
+        achievements.each do |achievement|
+          if @user.points >= achievement.point_value && !current_achievements_array.include?(achievement.id)
+            @new_achievement_array.push(achievement.id)
+          end
+          @user.achievement_ids = current_achievements_array + @new_achievement_array
+        end
+
+        @user.save
+      else
+        @match = false
+      end
+    end
+
+    if @match == true && @answer.save
+      session[:new_achievement_ids] = @new_achievement_array
+      flash[:drill_notice] = "CORRECT....OOOOHHHH GOOD FOR YOU, DON'T GET COMFORTABLE!"
+      redirect_to drill_path(@drill)
     else
-      render :new
+        flash[:drill_alert] = "WHAT WAS THAT PRIVATE!? WRONG!!! DROP DOWN....GIVE ME 20....AND TRY AGAIN!"
+        render "/drills/show"
     end
   end
 

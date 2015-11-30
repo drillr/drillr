@@ -18,14 +18,34 @@
 </div>
 
 <div class="">
-  <strong>Hint: </strong> <%= @drill.hint %>
+  <strong>Skill Level: </strong> <%= @drill.skill_level_display %>
 </div>
 
-<%= link_to "Edit", edit_drill_path(@drill), class: "btn btn-info" %>
-<%= link_to("Delete", drill_path(@drill), {method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure you want to delete this drill?"}}) %>
 
 
-<%= render "solutions/solution" %>
+
+<% if current_user.is_admin? %>
+  <%= link_to "Edit", edit_drill_path(@drill), class: "btn btn-info" %>
+  <%= link_to("Delete", drill_path(@drill), {method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure you want to delete this drill?"}}) %>
+    <!-- Only Show Solution if user is_admin  -->
+  <% if can? :manage, @drill %>
+    <%= render "solutions/solution" %>
+  <% end %>
+<% end %>
+
+
+
+<% if flash[:drill_alert] %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <%=flash[:drill_alert] %>
+    </div>
+<% elsif flash[:drill_notice] %>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <%=flash[:drill_notice] %>
+    </div>
+<% end  %>
 
 <%#= render "answers/form" %>
 
@@ -35,10 +55,29 @@
   <%= link_to fa_icon("plus-square"), drill_user_drills_path(@drill), method: :post, class: "icon-big" %>
 <% end %>
 
-<%= pluralize(@drill.user_drills.count, "user") %> have added this drill.
+<div class="">
+Added by <%= pluralize(@drill.user_drills.count, "user") %>.
+</div>
+
+<div class="">
+  <% if user_signed_in? && !current_user.has_answered_drill?(@drill) %>
+    <h2>Need a hint, soldier?</h2>
+    <%= link_to "Get hint", "javascript:void(0);", id: "use-hint", class: "btn btn-danger"  %>
+  <% end %>
+  <div class="panel panel-default" id="hint-show" style="display:none"><div class="panel-body"></div></div>
+</div>
 
 
-<% if @drill.answers.present? %>
+<div class="show-achievements">
+  <% if session[:new_achievement_ids] && @new_achievements.any? %>
+    <% @new_achievements.each do |achievement| %>
+      Latest Achievement: <%= achievement.name %>
+    <% end %>
+  <% end %>
+  <% session[:new_achievement_ids] = nil %>
+</div>
+
+<% if user_signed_in? && current_user.has_answered_drill?(@drill) %>
   <%= render "answers/answer" %>
 <% else %>
   <%= render "answers/form" %>

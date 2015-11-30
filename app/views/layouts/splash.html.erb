@@ -5,29 +5,60 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-</head>
+  </head>
 <body id="back">
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
      <ul>
        <div class="navbar-header">
-         <%= link_to root_path do %>
-       <span class="navbar-brand">drillr</span>
+        <% if user_signed_in? %>
+          <%= link_to dashboard_path do %>
+          <span class="navbar-brand">drillr</span>
+          <% end %>
+          <% else %>
+          <%= link_to root_path do %>
+          <span class="navbar-brand">drillr</span>
+         <% end %>
          <% end %>
        </div>
          <li><%= link_to "Leaderboard", leaderboard_path %></li>
-
-       <%= image_tag("star.jpg", class: "star") %>
+       <% if user_signed_in? && current_user.is_admin? %>
+       <div class="btn-group">
+         <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Add<span class="caret"></span>
+         </button>
+         <ul class="dropdown-menu">
+         <li><%= link_to "Add Category", new_category_path %></li>
+         <li><%= link_to "Add Drill Group", new_drill_group_path %></li>
+         <li><%= link_to "Add Drill", new_drill_path %></li>
+       </ul>
+       </div>
+       <% end %>
+         <li><%= link_to "Find Drills", categories_path %></li>
+         <div class="star-align">
+         <% if user_signed_in? %>
+         <%= link_to dashboard_path do %>
+         <%= image_tag("star.png", class: "star") %>
+         <% end %>
+         <% else %>
+         <%= link_to root_path do %>
+         <%= image_tag("star.png", class: "star") %>
+         <% end %>
+         <% end %>
+     </div>
            <div class="pull-right">
              <% if user_signed_in? %>
+               <li><%= link_to "Dashboard", dashboard_path %></li>
                <li><%= link_to "View Profile", user_path(current_user) %></li>
                <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+             <% else %>
+               <li><%= link_to "Login", new_user_session_path %></li>
+               <li><%= link_to "Sign Up", new_user_registration_path %></li>
              <% end %>
            </div>
        </div>
      </ul>
   </nav>
-<div class="col-md-8 col-centered">
+<div class="col-md-10 col-centered">
 
 
 <%= yield %>
