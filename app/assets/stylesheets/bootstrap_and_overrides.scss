@@ -77,7 +77,8 @@ btn-primary {
 
 .alert {
   font-family: 'armystampmedium';
-  font-size: 50px;
+  font-size: 44px;
+  margin-top: 10px;
 }
 
 .btn-info {
@@ -95,8 +96,4 @@ textarea {
   font-family: 'squares_boldregular';
   font-size: 13px;
   padding: 3px;
-}
-
-.btn-sm, .btn-group-sm > .btn, .btn-group-sm > .btn {
-  background-color: #555;
 }
