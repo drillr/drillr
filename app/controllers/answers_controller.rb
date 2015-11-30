@@ -32,10 +32,10 @@ class AnswersController < ApplicationController
           selected_drill = UserDrill.new
           selected_drill.user = @user
           selected_drill.drill = @drill
+          selected_drill.completed = true
+          selected_drill.save
         end
 
-        selected_drill.completed = true
-        selected_drill.save
 
         achievements = Achievement.all
 
