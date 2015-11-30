@@ -59,8 +59,8 @@
      </ul>
   </nav>
 <div class="container">
-  <% if flash[:notice] %>
-    <h1 id="can-can-deny"><%= flash[:notice] %></h1>
+  <% if flash[:can_notice] %>
+    <h1 id="can-can-deny"><%= flash[:can_notice] %></h1>
   <% end %>
   <div class="col-md-10 col-centered">
 <%= yield %>

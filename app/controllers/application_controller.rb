@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     # byebug
-    redirect_to new_user_session_path, notice: "Access Denied Maggot!"
+    flash[:can_notice] = "Access Denied Maggot!"
+    redirect_to new_user_session_path
   end
 
 end
