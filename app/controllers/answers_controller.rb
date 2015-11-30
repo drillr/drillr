@@ -14,7 +14,8 @@ class AnswersController < ApplicationController
     @solutions = @drill.solutions
 
     @solutions.each do |solution|
-      if @answer.body == solution.body
+      #if @answer.body == solution.body
+      if solution.body.include? @answer.body
         @match = true
         earned_points = @drill.base_points * @drill.skill_level
         original_points = @drill.base_points * @drill.skill_level

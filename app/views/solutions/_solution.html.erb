@@ -2,8 +2,8 @@
     <% @solutions.each do |solution| %>
     <div class="well">
       <%= solution.body %>
-      <%= link_to "Edit", edit_drill_solution_path(@drill, solution),
-                          class: "btn btn-info delete-right pull-right", data: {confirm: "Are you sure?"}%>
+      <%= link_to "Edit", edit_drill_path(@drill),
+                          class: "btn btn-info delete-right pull-right"%>
       <%= link_to "Delete", drill_solution_path(@drill, solution), method: :delete,
                           class: "btn btn-danger delete-right pull-right", data: {confirm: "Are you sure?"}%>
 </div>
