@@ -93,7 +93,7 @@ hashes.each do |drill|
 end
 
 
-drill_groups_javascript = [{name: "Recursion", category: Category.all[1]}, {name: "Conditional Statements", category: Category.all[1]}, {name: "Arrays", category: Category.all[1]}, {name: "Math", category: Category.all[1]}, {name: "Validation", category: Category.all[1]}]
+drill_groups_javascript = [{name: "Recursion", category: Category.all[1]}, {name: "Conditional Statements", category: Category.all[1]}, {name: "Array", category: Category.all[1]}, {name: "Math", category: Category.all[1]}, {name: "Validation", category: Category.all[1]}]
 drill_groups_javascript.each do |group|
   DrillGroup.create!(name: group[:name], category: group[:category])
 end
@@ -128,9 +128,9 @@ end
 
 
 
-arrays                    = [ {skill_level: 1, drill_group: DrillGroup.find_by_name("Arrays"), title: "Most Frequent Item", description: "Write a JavaScript program to find the most frequent item of an array.", solution: "answer goes here", hint: "hint goes here" },
-                              {skill_level: 2, drill_group: DrillGroup.find_by_name("Arrays"), title: "Remove Duplication", description: "Write a JavaScript program to remove duplicate items from an array (ignore case sensitivity).", solution: "answer goes here", hint: "hint goes here" } ]
-arrays.each do |drill|
+array                    = [ {skill_level: 1, drill_group: DrillGroup.find_by_name("Array"), title: "Most Frequent Item", description: "Write a JavaScript program to find the most frequent item of an array.", solution: "answer goes here", hint: "hint goes here" },
+                              {skill_level: 2, drill_group: DrillGroup.find_by_name("Array"), title: "Remove Duplication", description: "Write a JavaScript program to remove duplicate items from an array", solution: "answer goes here", hint: "hint goes here" } ]
+array.each do |drill|
   d = Drill.create!(title: drill[:title], base_points: 100, skill_level: drill[:skill_level], drill_group: drill[:drill_group], description: drill[:description], hint: drill[:hint])
   Solution.create!(drill: d, body: drill[:solution])
 end
