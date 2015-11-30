@@ -54,6 +54,14 @@
 
 <%= pluralize(@drill.user_drills.count, "user") %> have added this drill.
 
+<div class="show-achievements">
+  <% if session[:new_achievement_ids] && @new_achievements.any? %>
+    <% @new_achievements.each do |achievement| %>
+      Latest Achievement: <%= achievement.name %>
+    <% end %>
+  <% end %>
+  <% session[:new_achievement_ids] = nil %>
+</div>
 
 <% if user_signed_in? && current_user.has_answered_drill?(@drill) %>
   <%= render "answers/answer" %>

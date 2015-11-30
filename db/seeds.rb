@@ -137,5 +137,7 @@ Drill.all.each do |drill|
   Solution.create!(drill: drill, body: "answer")
 end
 
-Achievement.create!(name: "Unicorn", description: "You got the Unicorn Achievement!", point_value: 5200)
-Achievement.create!(name: "Private First Class", description: "You got the Private First Class Achievement!", point_value: 5210)
+Achievement.create!(name: "Private First Class", description: "You got the Private First Class Achievement!", point_value:  5)
+Achievement.create!(name: "Private Second Class", description: "You got the Private Second Class Achievement!", point_value: 20)
+Achievement.create!(name: "Private Third Class", description: "You got the Private Third Class Achievement!", point_value: 30)
+Achievement.create!(name: "Unicorn", description: "You got the Unicorn Achievement!", point_value: 40)

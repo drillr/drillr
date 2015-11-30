@@ -39,12 +39,14 @@ class AnswersController < ApplicationController
 
         achievements = Achievement.all
 
-        user_achievements_array = []
+        current_achievements_array = @user.achievement_ids
+        @new_achievement_array = []
+
         achievements.each do |achievement|
-          if @user.points >= achievement.point_value
-            user_achievements_array.push(achievement.id)
+          if @user.points >= achievement.point_value && !current_achievements_array.include?(achievement.id)
+            @new_achievement_array.push(achievement.id)
           end
-          @user.achievement_ids = user_achievements_array
+          @user.achievement_ids = current_achievements_array + @new_achievement_array
         end
 
         @user.save
@@ -54,6 +56,7 @@ class AnswersController < ApplicationController
     end
 
     if @match == true && @answer.save
+      session[:new_achievement_ids] = @new_achievement_array
       redirect_to drill_path(@drill), notice: "CORRECT....OOOOHHHH GOOD FOR YOU, DON'T GET COMFORTABLE!"
     else
         flash[:alert] = "WHAT WAS THAT PRIVATE!? WRONG!!! DROP DOWN....GIVE ME 20....AND TRY AGAIN!"
