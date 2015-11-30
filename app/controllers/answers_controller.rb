@@ -14,9 +14,25 @@ class AnswersController < ApplicationController
     @solutions = @drill.solutions
 
     @solutions.each do |solution|
-      #if @answer.body == solution.body
-      if solution.body.include? @answer.body
-        @match = true
+      byebug
+      if solution.match_type == "regex"
+        m = Regexp.new(solution.body, Regexp::MULTILINE)
+        #x = m.match(@answer.body.gsub /\r\n?/, "\n")
+        x = m.match(@answer.body)
+        if x.present?
+          @match = true
+        else
+          @match = false
+        end
+      else
+        if @answer.body == solution.body
+          @match = true
+        else
+          @match = false
+        end
+      end
+
+      if @match
         earned_points = @drill.base_points * @drill.skill_level
         original_points = @drill.base_points * @drill.skill_level
         if params[:answer][:used_hint]
@@ -52,8 +68,7 @@ class AnswersController < ApplicationController
         end
 
         @user.save
-      else
-        @match = false
+
       end
     end
 

@@ -62,7 +62,7 @@ private
 
   def drill_params
     params.require(:drill).permit(:title, :description, :base_points, :skill_level,
-                                  :drill_group_id, :hint, {solutions_attributes: [:id, :body]})
+                                  :drill_group_id, :hint, {solutions_attributes: [:id, :body, :match_type]})
   end
 
   def find_drill
