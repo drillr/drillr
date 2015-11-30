@@ -1,7 +1,8 @@
 class DrillsController < ApplicationController
 
   before_action :find_drill, only: [:edit, :update, :show, :destroy]
-
+  load_and_authorize_resource
+  
   def new
     @drill = Drill.new
     3.times { @drill.solutions.build }

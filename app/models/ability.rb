@@ -6,6 +6,8 @@ class Ability
 
     if user.is_admin?
       can :manage, :all
+    elsif !user.persisted?
+      can :read, [Achievement, Category, DrillGroup, User]
     else
       can :read, :all
       can :create, Answer
