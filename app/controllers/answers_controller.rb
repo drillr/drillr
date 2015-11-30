@@ -27,7 +27,7 @@ class AnswersController < ApplicationController
 
         # add to training plan
         selected_drill = UserDrill.where(user: @user, drill: @drill).first
-        byebug
+        # byebug
         if !selected_drill.present?
           Rails.logger.info "The user has not added this drill yet, so adding it for them and marking it complete..."
           selected_drill = UserDrill.new
