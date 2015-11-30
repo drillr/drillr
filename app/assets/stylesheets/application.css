@@ -42,6 +42,12 @@ body {
    background: #eee;
  }
 
+ tr:first-child a {
+   color: #FF0000;
+   opacity: .8;
+   font-weight: bold;
+ }
+
  .table > thead > tr > th {
    vertical-align: bottom;
    border-bottom: 2px solid #ddd;
