@@ -1,5 +1,5 @@
-  <div class="drill-page-head">
-    <h1><%= @category.name %> Drills</h1>
+    <div class="drill-page-head">
+      <h1><%= @category.name %> Drills</h1>
     </div>
 
     <% @category.drill_groups.each do |drill_group| %>
@@ -8,18 +8,17 @@
         <h4><%= drill_group.name %></h4>
         <hr>
       </div>
-        <% drill_group.drills.each do |drill| %>
-            <div class="drill-title">
-              <%= link_to drill.title, drill_path(drill) %>
-                <% if user_signed_in? && drill.selected_drill_by?(current_user)  %>
-                  <%= link_to fa_icon("minus-square-o"), drill_user_drill_path(drill, drill.user_drill_for(current_user)), method: :delete %>
-                <% else %>
-                  <%= link_to fa_icon("plus-square"), drill_user_drills_path(drill), method: :post%>
-                <% end %>
-            </div>
-
-        <% end %>
-      </div>
+      <% drill_group.drills.each do |drill| %>
+          <div class="drill-title">
+            <%= link_to drill.title, drill_path(drill) %>
+              <% if user_signed_in? && drill.selected_drill_by?(current_user)  %>
+                <%= link_to fa_icon("minus-square-o"), drill_user_drill_path(drill, drill.user_drill_for(current_user)), method: :delete %>
+              <% else %>
+                <%= link_to fa_icon("plus-square"), drill_user_drills_path(drill), method: :post%>
+              <% end %>
+          </div>
       <% end %>
+    <% end %>
 
-<br/><br/>
+    <br/><br/>
+  </div>
