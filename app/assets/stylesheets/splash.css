@@ -3,28 +3,28 @@
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: 100% auto;
-  width: 100%;
-  min-height:100%;
+  /*background-size: cover;*/
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 .login-form {
   position: relative;
   bottom: 500px;
   right: 200px;
-  width: 300px;
-  background-color: rgba(214, 190, 137, 0.5);
+  width: 350px;
+  /*background-color: rgba(214, 190, 137, 0.75);*/
   padding: 10px 20px;
-  border-radius: 25px;
-  box-shadow: inset 0 -3px 3px rgba(0,0,0,0.5), /*bottom internal shadow*/
-  inset 0 3px 3px rgba(255,255,255,1);
+  border-radius: 10px;
+  /*box-shadow: inset 0 -3px 3px rgba(0,0,0,0.5), /*bottom internal shadow*/*/
+  /*inset 0 3px 3px rgba(255,255,255,1);*/
 }
 
 .register {
   font-family: 'squares_boldregular';
   position: relative;
   bottom: 54px;
-  left: 150px;
+  left: 202px;
 }
 
 #yelling {
@@ -71,22 +71,27 @@
 
 .app-title {
   font-family: 'armalite_rifleregular';
-  font-size: 80px;
+  font-size: 74px;
+  margin-left: 350px;
+  margin-top: 5px;
   text-align: center;
   position: relative;
-
-}
+  align: right;
+  }
 
 .drill {
   font-family: 'armalite_rifleregular';
   font-size: 170px;
   position: relative;
-  left: 160px;
+  left: 240px;
+  margin-top: -40px;
 }
 
 .form-position {
-  position: absolute;
-  top: 600px;
+  position: fixed;
+  top: 780px;
+  left: 300px;
+  float:right;
 }
 
 #r {
