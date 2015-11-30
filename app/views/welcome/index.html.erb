@@ -1,17 +1,17 @@
+  <span class="drill">
+    <p>DRILL<span id="r">R</span></p>
+  </span>
 
   <div class="app-title">
     <p>Drop down and give me 20, private!</p>
   </div>
 
-  <div class="drill">
-    <p>DRILL<span id="r">R</span></p>
-  </div>
 
   <div class="form-position">
-  <%=image_tag('yelling_cartoon.jpg', id:'yelling') %>
+
     <div class="login-form">
 
-      <h2 id="login-yell">Log in, Private!</h2>
+      <!-- <h2 id="login-yell">Log in, Private!</h2> -->
         <% if !user_signed_in? %>
           <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <%= f.input :email, autofocus: true %>

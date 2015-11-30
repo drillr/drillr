@@ -15,3 +15,11 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+
+$('html').css('display', 'none');
+
+$('html').fadeIn(1000);
+
+});
