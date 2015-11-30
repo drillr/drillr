@@ -1,28 +1,8 @@
-== README
+== Drop and give me 20, Private!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+*Drillr* is a site for testing your coding skills. Choose drill groups within an
+array of languages, and earn points and achievements for your work. See how you
+stack up with other users on the leaderboard.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Drillr was made by a team of six over a weekend during CodeCore's web development bootcamp.
+It's built in Rails and makes use of Bootstrap, Font Awesome and jQuery on the frontend.
