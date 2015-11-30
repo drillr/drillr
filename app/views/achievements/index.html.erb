@@ -7,14 +7,14 @@
 </div>
 <% end %>
 
-<table>
+<table class="table">
 <% @achievements.each do |achievement| %>
   <tr>
     <td>
-      <%= image_tag achievement.badge.thumbnail.url %>
+      <%= image_tag achievement.badge.thumbnail.url, class: "img-thumbnail" %>
     </td>
     <td>
-      <%= link_to achievement.name, achievement %>
+      <%= achievement.name%>
     </td>
     <td>
       <%= achievement.point_value_display %>
