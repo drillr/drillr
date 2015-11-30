@@ -1,4 +1,13 @@
 $(document).ready(function() {
+  // swal({
+  //   title: "Achievement Unlocked!",
+  //   text: "Here's my error message!",
+  //   type: null,
+  //   confirmButtonText: "Cool",
+  //   imageUrl: "/assets/blue-mongolian.png",
+  //
+  // });
+
   $("html,body").on("click", "#use-hint", function() {
     console.log("clicked on use-hint");
     // use ajax to get the hint from the server, callback will:
