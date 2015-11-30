@@ -61,8 +61,8 @@ class AnswersController < ApplicationController
       flash[:drill_notice] = "CORRECT....OOOOHHHH GOOD FOR YOU, DO NOT GET COMFORTABLE!!!"
       redirect_to drill_path(@drill)
     else
-        flash[:drill_alert] = "WHAT WAS THAT PRIVATE!? WRONG!!! DROP DOWN....GIVE ME 20....AND TRY AGAIN!"
-        render "/drills/show"
+      flash[:drill_alert] = "WHAT WAS THAT PRIVATE!? WRONG!!! DROP DOWN....GIVE ME 20....AND TRY AGAIN!"
+      render "/drills/show"
     end
   end
 

@@ -1,15 +1,23 @@
+<div class="user-profile-avatar">
+  <%= image_tag @user.avatar.normal_size.url, class: "img-thumbnail pull-left" %>
+</div>
+
 <h1><%= @user.username %> - DASHBOARD</h1>
 <div class="user-profile-points">
   <h2><%= @user.points_display %></h2>
 </div>
 
+<hr />
 
 <div class="col-md-6">
 <h3>Training Plan</h3>
 <% if @user.user_drills.length > 0 %>
   <% @user.user_drills.each do |user_drill| %>
     <% if !user_drill.completed %>
-        <p><%= link_to user_drill.drill.title, drill_path(user_drill.drill) %></p>
+        <p>
+          <%= link_to user_drill.drill.title, drill_path(user_drill.drill) %>
+          <%= link_to fa_icon("minus-square-o"), drill_user_drill_path(user_drill.drill, user_drill.drill.user_drill_for(current_user)), method: :delete %>
+        </p>
     <% end %>
   <% end %>
 <% else %>
@@ -21,7 +29,7 @@
   <h3>Drills Completed</h3>
 <% @user.user_drills.each do |user_drill| %>
   <% if user_drill.completed %>
-      <p><%= link_to user_drill.drill.title, drill_path(user_drill.drill) %></p>
+      <p><%= fa_icon("check") %>  <%= link_to user_drill.drill.title, drill_path(user_drill.drill) %></p>
   <% end %>
 <% end %>
 </div>
@@ -29,7 +37,7 @@
 <div class="achievements col-md-6">
 <h3>Achievements <small><%= link_to "view all", achievements_path %></small></h3>
 <% @user.achievements.each do |achievement| %>
-<div class="">
+<div class="panel panel-default" style="padding: 5px">
     <div>
       <%= image_tag achievement.badge.thumbnail.url, class: "img-thumbnail pull-left", style: "margin-right: 0.25em" %>
     </div>

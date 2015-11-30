@@ -11,8 +11,11 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    if current_user
+    if current_user && !current_user.is_admin?
       @user = current_user
+    elsif current_user.is_admin?
+      @user = current_user
+      render :dashboard_admin
     else
       redirect_to root_path
     end
