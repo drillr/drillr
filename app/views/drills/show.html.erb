@@ -1,24 +1,42 @@
+<%= hidden_field_tag 'drill_id', @drill.id %>
 <h2> Drill: <%= @drill.title %> </h2>
 
 
 <div class="">
-  <h4>Category: <strong><%= @drill.drill_group.category.name %></h4></strong>
+  <h4><strong><%= link_to @drill.drill_group.category.name, category_path(@drill.drill_group.category) %></strong> / <%= @drill.drill_group.name %></h4>
 </div>
 
-<div class="">
-  <h4>Group: <strong><%= @drill.drill_group.name %></h4></strong>
-</div>
+<hr />
 
-<div class="">
-  <strong>Title: </strong> <%= @drill.title %>
-</div>
+<% if user_signed_in? && current_user.has_answered_drill?(@drill) %>
+  <div class="alert alert-success">
+    <h4>DRILL COMPLETED.</h4>
+  </div>
+<% end %>
 
-<div class="">
-  <strong>Description: </strong> <%= @drill.description %>
-</div>
 
-<div class="">
-  <strong>Skill Level: </strong> <%= @drill.skill_level_display %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h5><%= @drill.title %></h5>
+  </div>
+<div class="panel-body">
+  <p>
+  <%= @drill.description %>
+  </p>
+</div>
+<div class="panel-footer">
+  <p><strong>Skill Level: </strong> <%= @drill.skill_level_display %></p>
+  <% if user_signed_in? && @drill.selected_drill_by?(current_user) %>
+    <%= link_to fa_icon("minus-square-o"), drill_user_drill_path(@drill, @drill.user_drill_for(current_user)), method: :delete %>
+  <% else %>
+    <%= link_to fa_icon("plus-square"), drill_user_drills_path(@drill), method: :post %>
+  <% end %>
+
+  <span>  Added by <%= pluralize(@drill.user_drills.count, "user") %>.</span>
+
+
+
+</div>
 </div>
 
 
@@ -36,28 +54,28 @@
 
 
 <% if flash[:drill_alert] %>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <%=flash[:drill_alert] %>
-    </div>
+  <script type="text/javascript">
+    swal({
+      title: "Incorrect",
+      text: "WHAT WAS THAT PRIVATE!? WRONG!!! DROP DOWN....GIVE ME 20....AND TRY AGAIN!",
+      type: "error",
+      confirmButtonText: "Try Again",
+    });
+  </script>
+
 <% elsif flash[:drill_notice] %>
-    <div class="alert alert-warning alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <%=flash[:drill_notice] %>
-    </div>
+<script type="text/javascript">
+  swal({
+    title: "Correct",
+    text: "CORRECT....OOOOHHHH GOOD FOR YOU, DO NOT GET COMFORTABLE!!!",
+    type: "success",
+    confirmButtonText: "Ok",
+  });
+</script>
+
 <% end  %>
 
 <%#= render "answers/form" %>
-
-<% if user_signed_in? && @drill.selected_drill_by?(current_user) %>
-  <%= link_to fa_icon("minus-square-o"), drill_user_drill_path(@drill, @drill.user_drill_for(current_user)), method: :delete, class: "icon-big" %>
-<% else %>
-  <%= link_to fa_icon("plus-square"), drill_user_drills_path(@drill), method: :post, class: "icon-big" %>
-<% end %>
-
-<div class="">
-Added by <%= pluralize(@drill.user_drills.count, "user") %>.
-</div>
 
 <div class="">
   <% if user_signed_in? && !current_user.has_answered_drill?(@drill) %>

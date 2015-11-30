@@ -6,8 +6,8 @@
 #   cities = City.create!([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create!(name: 'Emanuel', city: cities.first)
 20.times do
-  User.create!({first_name: Faker::Name.first_name,
-               last_name: Faker::Name.last_name,
+  User.create!({first_name: Faker::Name.first_name.capitalize,
+               last_name: Faker::Name.last_name.capitalize,
                username: Faker::Internet.user_name,
                email: Faker::Internet.email,
                password: Faker::Internet.password(8) })

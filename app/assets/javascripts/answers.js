@@ -15,7 +15,7 @@ $(document).ready(function() {
     // hide the 'hint' button
     // change the hidden field to true
     $.ajax({
-      url: window.location.href + ".json",
+      url: (window.location.href).replace("/answers","") + ".json",
       success: function(data){
         var hint = data.hint;
         $("#hint-show").children(".panel-body").html(hint);

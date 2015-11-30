@@ -4,6 +4,11 @@
     <div class="alert alert-success">
       <%= flash[:registration] %>
     </div>
+  <% elsif flash[:notice] %>
+    <div class="alert alert-success">
+      <%= flash[:notice] %>
+    </div>
+
   <% end %>
 
 <h2>Log in</h2>
