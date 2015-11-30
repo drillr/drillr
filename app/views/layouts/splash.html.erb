@@ -14,6 +14,11 @@
 <%= yield %>
 
 </div>
-
+<audio id="sound_tag" src="http://www.dewtone.com/promo/gunshot.mp3" preload="auto"></audio>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#sound_tag')[0].play();
+    });
+</script>
 </body>
 </html>
