@@ -26,16 +26,17 @@ class AnswersController < ApplicationController
         @user.points = @user.points + earned_points
 
         # add to training plan
-        selected_drill = UserDrill.where(user: @user, drill: @drill)
+        selected_drill = UserDrill.where(user: @user, drill: @drill).first
+        # byebug
         if !selected_drill.present?
           Rails.logger.info "The user has not added this drill yet, so adding it for them and marking it complete..."
           selected_drill = UserDrill.new
           selected_drill.user = @user
           selected_drill.drill = @drill
         end
-
         selected_drill.completed = true
         selected_drill.save
+
 
         achievements = Achievement.all
 
