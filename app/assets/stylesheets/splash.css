@@ -73,7 +73,7 @@
   font-family: 'armalite_rifleregular';
   font-size: 74px;
   margin-left: 350px;
-  margin-top: 5px;
+  margin-top: 20px;
   text-align: center;
   position: relative;
   align: right;
@@ -89,7 +89,7 @@
 
 .form-position {
   position: fixed;
-  top: 790px;
+  top: 810px;
   left: 300px;
   float:right;
 }
