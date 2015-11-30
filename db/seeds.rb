@@ -259,3 +259,4 @@ end
 
 u = User.find_by_email("user@user.com")
 u.achievement_ids = [1,2,3,4]
+u.save
