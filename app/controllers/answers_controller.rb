@@ -57,9 +57,10 @@ class AnswersController < ApplicationController
 
     if @match == true && @answer.save
       session[:new_achievement_ids] = @new_achievement_array
-      redirect_to drill_path(@drill), notice: "CORRECT....OOOOHHHH GOOD FOR YOU, DON'T GET COMFORTABLE!"
+      flash[:drill_notice] = "CORRECT....OOOOHHHH GOOD FOR YOU, DON'T GET COMFORTABLE!"
+      redirect_to drill_path(@drill)
     else
-        flash[:alert] = "WHAT WAS THAT PRIVATE!? WRONG!!! DROP DOWN....GIVE ME 20....AND TRY AGAIN!"
+        flash[:drill_alert] = "WHAT WAS THAT PRIVATE!? WRONG!!! DROP DOWN....GIVE ME 20....AND TRY AGAIN!"
         render "/drills/show"
     end
   end

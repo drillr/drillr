@@ -8,7 +8,8 @@ $(document).ready(function() {
       url: window.location.href + ".json",
       success: function(data){
         var hint = data.hint;
-        $("#hint-show").html(hint);
+        $("#hint-show").children(".panel-body").html(hint);
+        $("#hint-show").slideDown();
         $("#use-hint").fadeOut();
         $("#answer_used_hint").val("true");
       },
