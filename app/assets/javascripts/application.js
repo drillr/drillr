@@ -20,6 +20,6 @@ $(document).ready(function() {
 
 $('html').css('display', 'none');
 
-$('html').fadeIn(1000);
+$('html').fadeIn(100);
 
 });

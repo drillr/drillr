@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Drill Groups</title>
-  </head>
-  <body>
+  <div class="drill-page-head">
+    <h1><%= @category.name %> Drills</h1>
+    </div>
 
-
-    <h1><%= @category.name %> Drill Groups</h1>
-
-    <div class="">
       <% @category.drill_groups.each do |drill_group| %>
-      <div class="">
-        <h4><%= drill_group.name %> <%= fa_icon("plus-square") %></h4>
+      <div class="drill-group-name">
+        <h4><%= drill_group.name %></h4>
+        <hr>
       </div>
         <% drill_group.drills.each do |drill| %>
-            <div class="">
+            <div class="drill-title">
               <%= link_to drill.title, drill_path(drill) %>
                 <% if user_signed_in? && drill.selected_drill_by?(current_user)  %>
                   <%= link_to fa_icon("minus-square-o"), drill_user_drill_path(drill, drill.user_drill_for(current_user)), method: :delete %>
@@ -26,9 +19,4 @@
 
         <% end %>
       <% end %>
-    </div>
-
-
-
-  </body>
-</html>
+<br/><br/>
