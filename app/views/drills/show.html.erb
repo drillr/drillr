@@ -71,7 +71,17 @@ Added by <%= pluralize(@drill.user_drills.count, "user") %>.
 <div class="show-achievements">
   <% if session[:new_achievement_ids] && @new_achievements.any? %>
     <% @new_achievements.each do |achievement| %>
-      Latest Achievement: <%= achievement.name %>
+      <!-- Latest Achievement: <%# achievement.name %> -->
+      <script type="text/javascript">
+      swal({
+        title: "Achievement Unlocked: <%= achievement.name %>",
+        text: "<%= achievement.description %>",
+        type: null,
+        confirmButtonText: "Sir, Yes, Sir!",
+        imageUrl: "<%= achievement.badge.normal_size.url %>",
+      });
+
+      </script>
     <% end %>
   <% end %>
   <% session[:new_achievement_ids] = nil %>

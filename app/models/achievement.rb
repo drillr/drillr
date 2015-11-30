@@ -6,6 +6,8 @@ class Achievement < ActiveRecord::Base
   has_many :user_achievements, dependent: :destroy
   has_many :users, through: :user_achievements
 
+  mount_uploader :badge, ImageUploader
+
   def point_value_display
     ActionController::Base.helpers.pluralize(point_value, "point")
   end

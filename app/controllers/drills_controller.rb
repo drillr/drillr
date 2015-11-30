@@ -38,6 +38,7 @@ class DrillsController < ApplicationController
     @answer = Answer.new
 
     if session[:new_achievement_ids]
+      Rails.logger.info ">>>>>>>>>>>>>>>>>>> achievement unlocked <<<<<<<<<<<<<<<<<<<<<<<<<<"
       @new_achievements = []
       session[:new_achievement_ids].each do |achievement|
         @new_achievements.push(Achievement.find(achievement))
