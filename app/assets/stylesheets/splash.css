@@ -1,5 +1,4 @@
 #back {
-  /*background-color: pink;  no-repeat center center fixed*/
   background: url(main_banner_copy.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -7,12 +6,6 @@
   background-size: 100% auto;
   width: 100%;
   min-height:100%;
-}
-
-.app-title {
-  font-family: 'armalite_rifleregular';
-  font-size: 110px;
-  text-align: center;
 }
 
 .login-form {
@@ -25,15 +18,13 @@
   border-radius: 25px;
   box-shadow: inset 0 -3px 3px rgba(0,0,0,0.5), /*bottom internal shadow*/
   inset 0 3px 3px rgba(255,255,255,1);
-  /*box-shadow: 5px 5px 5px rgba(68,68,68,0.6);
-  box-shadow: inset 0 0 30px #FAF8C3;*/
 }
 
 .register {
   font-family: 'squares_boldregular';
   position: relative;
   bottom: 54px;
-  left: 120px;
+  left: 150px;
 }
 
 #yelling {
@@ -47,7 +38,57 @@
   box-shadow: inset 0 -3px 3px rgba(0,0,0,0.5),
 }
 
+/*yelling cartoon*/
+#yelling:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
 #login-yell {
   position: relative;
   left: 40px;
+}
+
+.app-title {
+  font-family: 'armalite_rifleregular';
+  font-size: 80px;
+  text-align: center;
+  position: relative;
+
+}
+
+.drill {
+  font-family: 'armalite_rifleregular';
+  font-size: 170px;
+  position: relative;
+  left: 160px;
+}
+
+.form-position {
+  position: absolute;
+  top: 600px;
+}
+
+#r {
+  color: #4F6F40;
 }
