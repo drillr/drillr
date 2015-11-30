@@ -99,12 +99,14 @@
 }
 
 .view-drills-button {
-  float: right;
-  top: 600px;
-  right: 40px;
-  position: fixed;
-  font-size: 20px;
-  background-color: white;
-  font-family: 'squares_boldregular';
-  padding: 5px;
+   float: right;
+   top: 600px;
+   right: 40px;
+   position: fixed;
+   font-size: 22px;
+   background-color: #eee;
+   font-family: 'armalite_rifleregular';
+   padding: 6px;
+   opacity: .85;
+   border-radius: 5px;
 }

@@ -28,7 +28,7 @@
 .star-align {
   display:inline-block;
   text-align:center;
-  width: 36%
+  width: 31%
   }
 
 body {
@@ -58,7 +58,7 @@ body {
   color: #eee !important;
   text-decoration: none;
   font-family: 'squares_boldregular';
-  font-size: 11px;
+  font-size: 12px;
   margin-top: 60px;
   }
 
@@ -89,6 +89,7 @@ body {
   background-color: #4F6F40;
   color: white;
   opacity: .95;
+
   }
 
 ul li a:hover {
