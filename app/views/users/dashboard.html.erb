@@ -29,7 +29,7 @@
   <h3>Drills Completed</h3>
 <% @user.user_drills.each do |user_drill| %>
   <% if user_drill.completed %>
-      <p><%= fa_icon("check") %>  <%= link_to user_drill.drill.title, drill_path(user_drill.drill) %></p>
+      <p><%= fa_icon("check") %>  (<%= user_drill.drill.drill_group.category.name %>/<%= user_drill.drill.drill_group.name %>) <%= link_to user_drill.drill.title, drill_path(user_drill.drill) %></p>
   <% end %>
 <% end %>
 </div>

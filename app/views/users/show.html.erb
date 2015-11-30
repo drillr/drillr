@@ -14,19 +14,25 @@
   <% if @user.achievements.count == 0 %>
     <p>This user has no achievements yet.</p>
   <% else %>
-    <% @user.achievements.each do |a| %>
-      <div>
-        <p><%= a.name %></p>
-        <p><%= a.description %></p>
-      </div>
+  <% @user.achievements.each do |achievement| %>
+    <div class="panel panel-default" style="padding: 5px">
+        <div>
+          <%= image_tag achievement.badge.thumbnail.url, class: "img-thumbnail pull-left", style: "margin-right: 0.25em" %>
+        </div>
+        <h5><%= achievement.name %></h5>
+      <div class="clearfix"></div>
+    </div>
     <% end %>
   <% end %>
 </p>
 
 <h3>Completed Drills</h3>
-<p>
-  to do...
-</p>
+<% @user.user_drills.each do |user_drill| %>
+  <% if user_drill.completed %>
+
+      <p><%= fa_icon("check") %> (<%= user_drill.drill.drill_group.category.name %>/<%= user_drill.drill.drill_group.name %>) <%= link_to user_drill.drill.title, drill_path(user_drill.drill) %></p>
+  <% end %>
+<% end %>
 <hr>
 <% if can? :manage, @user %>
   <%= link_to "Update profile", edit_user_registration_path %> |
