@@ -1,4 +1,5 @@
-<h2>Enlist</h2>
+<div class="col-md-8 col-centered">
+  <h2>Enlist</h2>
 <p>Let's see what you're made of.</p>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -14,3 +15,5 @@
   <%= f.input :password_confirmation %>
   <%= f.submit "Sign up", class: "btn btn-primary" %>
 <% end %>
+</div>
+<div style="padding-bottom:25px"></div>
