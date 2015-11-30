@@ -43,7 +43,6 @@
 
 
 <% if current_user.is_admin? %>
-
   <%= link_to "Edit", edit_drill_path(@drill), class: "btn btn-info" %>
   <%= link_to("Delete", drill_path(@drill), {method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure you want to delete this drill?"}}) %>
     <!-- Only Show Solution if user is_admin  -->
@@ -107,8 +106,6 @@
 </div>
 
 <% if user_signed_in? && current_user.has_answered_drill?(@drill) %>
-  <%= render "answers/answer" %>
-<% elsif current_user.is_admin? %>
   <%= render "answers/answer" %>
 <% else %>
   <%= render "answers/form" %>
