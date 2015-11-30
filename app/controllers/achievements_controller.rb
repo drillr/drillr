@@ -19,7 +19,7 @@ class AchievementsController < ApplicationController
   end
 
   def index
-    @achievements = Achievement.all
+    @achievements = Achievement.all.order("point_value ASC")
   end
 
   def show

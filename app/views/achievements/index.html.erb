@@ -1,7 +1,25 @@
 <h1>All Achievements</h1>
-<%= link_to "New Achievement", new_achievement_path %>
-<% @achievements.each do |achievement| %>
-  <div>
-    <%= link_to achievement.name, achievement %>
-  </div>
+<% if can? :manage, @achievements.first %>
+<div>
+  <%= link_to "New Achievement", new_achievement_path, class: "btn btn-default" %>
+  <br />
+  <br />
+</div>
 <% end %>
+
+<table class="table">
+<% @achievements.each do |achievement| %>
+  <tr>
+    <td>
+      <%= image_tag achievement.badge.thumbnail.url, class: "img-thumbnail" %>
+    </td>
+    <td>
+      <%= achievement.name%>
+    </td>
+    <td>
+      <%= achievement.point_value_display %>
+    </td>
+
+  </tr>
+<% end %>
+</table>

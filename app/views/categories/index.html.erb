@@ -5,14 +5,17 @@
       <div class="category-columns">
         <%= link_to category.name, category_path(category), class: "btn btn-default btn-lg" %>
 
-        <% if can? :edit, category %>
-        <br/>
-          <%= link_to "Edit", edit_category_path(category), class: "btn btn-info btn-sm" %>
-        <% end %>
+        <div style="text-align: center">
+          <br />
+          <% if can? :edit, category %>
+            <%= link_to "Edit", edit_category_path(category), class: "btn btn-info btn-sm" %>
+          <% end %>
 
-        <% if can? :destroy, category %>
-          <%= link_to("Delete", category_path(category), {method: :delete, class: "btn btn-danger btn-sm", data: {confirm: "Are you sure you want to delete this category?"}}) %>
-        <% end %>
+          <% if can? :destroy, category %>
+            <%= link_to("Delete", category_path(category), {method: :delete, class: "btn btn-danger btn-sm", data: {confirm: "Are you sure you want to delete this category?"}}) %>
+          <% end %>
+
+        </div>
       </div>
       </div>
     <% end %>

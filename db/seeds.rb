@@ -227,10 +227,10 @@ fonts.each do |drill|
   Solution.create!(drill: d, body: drill[:solution])
 end
 
-Achievement.create!(name: "Private First Class", description: "You got the Private First Class Achievement!", point_value:  5)
-Achievement.create!(name: "Private Second Class", description: "You got the Private Second Class Achievement!", point_value: 20)
-Achievement.create!(name: "Private Third Class", description: "You got the Private Third Class Achievement!", point_value: 30)
-Achievement.create!(name: "Unicorn", description: "You got the Unicorn Achievement!", point_value: 40)
+Achievement.create!(name: "Private", description: "You're a tough cookie. Keep it up.", point_value:  50)
+Achievement.create!(name: "Sergeant", description: "Impressive. One day you just might make Major.", point_value: 300)
+Achievement.create!(name: "Major", description: "Congratulations on your promotion. NOW GET BACK OUT THERE.", point_value: 600)
+Achievement.create!(name: "Colonel", description: "You have a distinguised career.", point_value: 900)
 
 
 links        = [ {skill_level: 2, drill_group: DrillGroup.find_by_name("Links"), title: "While Loop VI", description: "Use while loop to print 1 to 15 (both numbers included)", solution: "answer goes here", hint: "hint goes here" },
